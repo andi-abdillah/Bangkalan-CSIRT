@@ -31,8 +31,7 @@
             <div class="mb-3">
               <label for="image" class="form-label">Image Property</label>
               @if ($property->image)
-                <!-- <img src="{{ asset('storage/' . $property->image) }}" class="img-preview img-fluid mb-3 col-sm-6 d-block">   -->
-                <img src="{{ asset($property->image) }}" class="img-preview img-fluid mb-3 col-sm-6 d-block">  
+                <img src="{{ asset('storage/' . $property->image) }}" class="img-preview img-fluid mb-3 col-sm-6 d-block">  
               @else     
                 <img class="img-preview img-fluid mb-3 col-sm-6">
               @endif

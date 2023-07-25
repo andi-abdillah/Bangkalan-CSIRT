@@ -19,7 +19,7 @@
     </div>
     @endif
 
-    <div class="flex justify-between items-center my-4 mx-auto pt-24 pb-12 lg:p-16">
+    <div class="flex justify-between items-center my-8 mx-auto pt-24 pb-12 lg:p-16">
       <div class="hidden lg:inline w-1/2 opacity-50">
         <img class="w-5/6 rounded-[15px] mx-auto" src="image-property/login-image.jpg" alt="login-image">
       </div>
@@ -31,13 +31,13 @@
           <form class="space-y-4 md:space-y-6" action="/login" method="post">
             @csrf
             <div>
-              <input type="email" name="email" id="email" placeholder="Your Email" class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary rounded-none" autofocus required />
+              <input type="email" name="email" id="email" placeholder="Your Email" class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary" autofocus required />
               @error('email')
               <div class="invalid-feedback">{{ $message }}</div>
               @enderror
             </div>
             <div>
-              <input type="password" name="password" autocomplete="off" id="password" placeholder="Password" class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary rounded-none" required />
+              <input type="password" name="password" autocomplete="off" id="password" placeholder="Password" class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary" required />
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-start">
@@ -52,13 +52,13 @@
             <div class="flex items-center justify-between">
               <div class="captcha w-full flex justify-between">
                 <span>{!! captcha_img() !!}</span>
-                <button type="button" class="btn btn-secondary rounded-none text-xl" class="reload" id="reload">
+                <button type="button" class="btn btn-secondary text-xl" class="reload" id="reload">
                   &#x21bb;
                 </button>
               </div>
             </div>
             <div>
-              <input type="text" name="captcha" autocomplete="off" id="captcha" placeholder="Enter Captcha" class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary rounded-none" required>
+              <input type="text" name="captcha" autocomplete="off" id="captcha" placeholder="Enter Captcha" class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary" required>
               @error('captcha')
               <div class="invalid-feedback">
                 <div class="alert alert-error rounded-none">
@@ -72,7 +72,7 @@
               </div>
               @enderror
             </div>
-            <button type="submit" class="btn btn-outline btn-secondary w-full rounded-none">Log in</button>
+            <button type="submit" class="btn btn-outline btn-secondary w-full">Log in</button>
           </form>
         </div>
       </div>

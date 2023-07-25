@@ -17,8 +17,7 @@
             </div>
 
             <p>{{ $footer->name }} dapat dihubungi melalui : </p>
-            <!-- <p>Email : {{ $footer->email }} (Silahkan gunakan PGP untuk komunikasi e-mail terenkripsi, PGP Key dapat diunduh <a href="{{'storage/' .  $key->path }}">disini</a></p> -->
-            <p>Email : {{ $footer->email }} (Silahkan gunakan PGP untuk komunikasi e-mail terenkripsi) PGP Key dapat diunduh <a class="underline decoration-primary" href="{{ $key->path }}">di sini</a></p>
+            <p>Email : {{ $footer->email }} (Silahkan gunakan PGP untuk komunikasi e-mail terenkripsi) PGP Key dapat diunduh <a class="underline decoration-primary" href="{{'storage/' .  $key->path }}">di sini</a></p>
             <p>Telephone : {{ $footer->telephone }}</p>
             @endforeach
             @endforeach

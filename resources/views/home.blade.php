@@ -16,8 +16,8 @@
             @foreach ($posts->take(6) as $post)
             <div class="flex flex-wrap lg:flex-row justify-center m-6">
                 <div class="flex items-center justify-center lg:justify-start w-full lg:w-1/2">
-                    <div id="laptop-container" class="w-full h-[210px] md:w-[500px] md:h-[350px] lg:w-[34rem] lg:h-[21rem]">
-                        <img class="child-img w-[260px] h-[180px] md:w-[410px] md:h-[280px] lg:w-[25rem] lg:h-[17rem] mt-2 md:mt-6 lg:mt-6 rounded-xl" src="{{ asset($post->image) }}" lt="{{ $post->category->name }}" />
+                    <div id="laptop-container" class="w-[310px] h-[180px] md:w-[500px] md:h-[350px] lg:w-[34rem] lg:h-[21rem]">
+                        <img class="child-img w-[210px] h-[145px] md:w-[410px] md:h-[280px] lg:w-[25rem] lg:h-[17rem] mt-3 md:mt-6 lg:mt-6 rounded md:rounded-xl lg:rounded-xl" src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" />
                     </div>
                 </div>
                 <div class="flex flex-col gap-3 items-center lg:items-start lg:justify-center w-full lg:w-1/2 text-center lg:text-start">
@@ -27,7 +27,7 @@
                         By <a class="underline decoration-primary" href="/posts?author={{ $post->author->username }}">{{ $post->author->name }}</a> at <span>{{ date('F d, Y', strtotime($post->created_at)) }}</span>
                     </p>
                     <p class="w-11/12 md:w-4/5 lg:w-full">{{ $post->excerpt }}</p>
-                    <a href="/posts/{{ $post->slug }}" class="btn btn-outline btn-secondary rounded-none">Read More
+                    <a href="/posts/{{ $post->slug }}" class="btn btn-outline btn-secondary">Read More
                         <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                         </svg>

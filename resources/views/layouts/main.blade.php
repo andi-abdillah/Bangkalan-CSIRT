@@ -7,10 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   @foreach ($properties->take(1) as $property)
-  <!-- <link rel="icon" href="{{ asset('storage/' . $property->image) }}"> -->
-  <link rel="icon" href="{{ asset($property->image) }}">
+  <link rel="icon" href="{{ asset('storage/' . $property->image) }}">
   @endforeach
-
 
   <!-- Core CSS -->
   <link rel="stylesheet" href="{{mix('css/app.css')}}">
@@ -29,8 +27,9 @@
     }
 
     .hero {
-      @foreach ($propertiez->take(1) as $property) background-image: url('{{ asset($property->image) }}');
-      @endforeach;
+      @foreach ($propertiez->take(1) as $property)
+        background-image: url('{{ asset('storage/' . $property->image) }}');
+      @endforeach
     }
 
     .pdfobject-container {
@@ -39,12 +38,12 @@
     }
 
     .link-underline {
-      border-bottom-width: 0; 
+      border-bottom-width: 0;
       background-image: linear-gradient(transparent, transparent), linear-gradient(hsl(var(--s)), hsl(var(--s)));
       background-size: 0 2.5px;
       background-position: 0 100%;
       background-repeat: no-repeat;
-      transition: background-size .4s ease-in-out;
+      transition: background-size .3s ease-in-out;
       text-decoration: none;
     }
 
@@ -57,7 +56,7 @@
     }
 
     #laptop-container {
-      background-image: url("image-property/0fbc92e46f5dbd39981a4fcfbc5d413c.png");
+      background-image: url("image-property/laptop-container.png");
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;

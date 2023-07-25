@@ -3726,11 +3726,6 @@ details.collapse summary::-webkit-details-marker {
   margin: 1.5rem;
 }
 
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -3807,10 +3802,6 @@ details.collapse summary::-webkit-details-marker {
 
 .mr-2 {
   margin-right: 0.5rem;
-}
-
-.ms-auto {
-  margin-inline-start: auto;
 }
 
 .mt-2 {
@@ -3901,12 +3892,12 @@ details.collapse summary::-webkit-details-marker {
   height: 20rem;
 }
 
-.h-\[180px\] {
-  height: 180px;
+.h-\[145px\] {
+  height: 145px;
 }
 
-.h-\[210px\] {
-  height: 210px;
+.h-\[180px\] {
+  height: 180px;
 }
 
 .h-full {
@@ -3981,8 +3972,12 @@ details.collapse summary::-webkit-details-marker {
   width: 20rem;
 }
 
-.w-\[260px\] {
-  width: 260px;
+.w-\[210px\] {
+  width: 210px;
+}
+
+.w-\[310px\] {
+  width: 310px;
 }
 
 .w-auto {
@@ -4094,10 +4089,6 @@ details.collapse summary::-webkit-details-marker {
 
 .rounded-none {
   border-radius: 0px;
-}
-
-.rounded-xl {
-  border-radius: 0.75rem;
 }
 
 .border {
@@ -4249,11 +4240,6 @@ details.collapse summary::-webkit-details-marker {
 .py-28 {
   padding-top: 7rem;
   padding-bottom: 7rem;
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .py-4 {
@@ -4614,6 +4600,10 @@ details.collapse summary::-webkit-details-marker {
     margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
   }
 
+  .md\:rounded-xl {
+    border-radius: 0.75rem;
+  }
+
   .md\:border-l {
     border-left-width: 1px;
   }
@@ -4731,6 +4721,10 @@ details.collapse summary::-webkit-details-marker {
 
   .lg\:justify-center {
     justify-content: center;
+  }
+
+  .lg\:rounded-xl {
+    border-radius: 0.75rem;
   }
 
   .lg\:bg-center {

@@ -8,8 +8,7 @@
             <h1 class="text-2xl lg:text-4xl font-bold my-8">{{ $post->title }}</h1>
             <p class="pb-4">By <a href="/posts?author={{ $post->author->username }}" class="underline decoration-primary">{{ $post->author->name }}</a> in <a href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a></p>
             <div class="pb-4" style="max-height: 400px; overflow:hidden">
-                <!-- <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" class="img-fluid">  -->
-                <img src="{{ asset($post->image) }}" alt="{{ $post->category->name }}" class="w-full">
+                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" class="w-full">
             </div>
             <article class="my-4">
                 {!! $post->body !!}

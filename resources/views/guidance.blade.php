@@ -18,8 +18,7 @@
                     @foreach ($guidances as $key => $guidance)
                     <tr class="lg:text-xl">
                         <th>{{ $guidances->firstItem() + $key }}</th>
-                        <!-- <td> <a href="{{ 'storage/' .  $guidance->path }}" target="_blank">{{ $guidance->name }}</a> </td> -->
-                        <td><a class="transition ease-in-out duration-300 underline underline-offset-4 hover:decoration-primary" href="{{ $guidance->path }}" target="_blank">{{ $guidance->name }}</a></td>
+                        <td><a class="transition ease-in-out duration-300 underline underline-offset-4 hover:decoration-primary" href="{{ 'storage/' .  $guidance->path }}" target="_blank">{{ $guidance->name }}</a></td>
                         <td>{{ number_format(round($guidance->size / 1024, 2),2,",",".") }} Kb</td>
                     </tr>
                     @endforeach

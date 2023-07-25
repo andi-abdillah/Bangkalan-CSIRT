@@ -20,7 +20,7 @@
       </div>
       <a class="lg:ml-7 my-1" href="/">
         @foreach ($properties->take(1) as $property)
-        <img class="h-14 w-14" src="{{ asset($property->image) }}" alt="{{ $property->property }}">
+        <img class="h-14 w-14" src="{{ asset('storage/' . $property->image) }}" alt="{{ $property->property }}">
         @endforeach
       </a>
     </div>
@@ -43,6 +43,7 @@
         <li><button class="capitalize" value="night">night</button></li>
         <li><button class="capitalize" value="luxury">luxury</button></li>
         <li><button class="capitalize" value="dracula">dracula</button></li>
+        <li><button class="capitalize" value="forest">forest</button></li>
         <li><button class="capitalize" value="business">business</button></li>
       </ul>
     </div>

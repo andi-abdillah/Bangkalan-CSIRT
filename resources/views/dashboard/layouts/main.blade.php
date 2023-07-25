@@ -6,8 +6,7 @@
     <meta name="description" content="Dashboard">
 
     @foreach ($properties->where('property', 'Logo')->take(1) as $property)
-      <!-- <link rel="icon" href="{{ asset('storage/' . $property->image) }}"> -->
-      <link rel="icon" href="{{ asset($property->image) }}">
+      <link rel="icon" href="{{ asset('storage/' . $property->image) }}">
     @endforeach   
 
     @foreach ($profils->take(1) as $profil)
