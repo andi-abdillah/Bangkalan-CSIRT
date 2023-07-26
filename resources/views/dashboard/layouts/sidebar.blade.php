@@ -1,83 +1,208 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-    <div class="position-sticky pt-3">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
-            <span data-feather="home"></span>
+<div class="lg:drawer-open">
+  <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-side">
+    <label for="my-drawer-2" class="drawer-overlay"></label>
+    <ul class="flex flex-col gap-1.5 w-72 bg-neutral rounded-[20px] p-4 my-auto lg:m-5 backdrop-blur-md bg-neutral drop-shadow-lg">
+      <li class="{{ Request::is('dashboard') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
+        <a href="/dashboard" class="flex gap-4 w-full h-full px-4 py-2">
+          <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard') ? 'icon-active' : '' }}">
+            <i class="fa-solid fa-house m-auto"></i>
+          </div>
+          <span class="self-center">
             Dashboard
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="/dashboard/posts">
-            <span data-feather="file-text"></span>
+          </span>
+        </a>
+      </li>
+      <li class="{{ Request::is('dashboard/posts*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
+        <a href="/dashboard/posts" class="flex gap-4 w-full h-full px-4 py-2">
+          <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/posts*') ? 'icon-active' : '' }}">
+            <i class="fa-solid fa-blog m-auto"></i>
+          </div>
+          <span class="self-center">
             My Post
-          </a>
-        </li>
-      </ul>
-
+          </span>
+        </a>
+      </li>
       @can('admin')
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Administrator</span>
-        </h6>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">
-              <span data-feather="grid"></span>
-              Post Category
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('dashboard/footers*') ? 'active' : '' }}" href="/dashboard/footers">
-              <span data-feather="book"></span>
-              Post Footer
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('dashboard/properties*') ? 'active' : '' }}" href="/dashboard/properties">
-              <span data-feather="image"></span>
-              Image Property
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('dashboard/profils*') ? 'active' : '' }}" href="/dashboard/profils">
-              <span data-feather="clipboard"></span>
-              Profile
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('dashboard/files*') ? 'active' : '' }}" href="/dashboard/files">
-              <span data-feather="file"></span>
-              File RFC2350
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('dashboard/services*') ? 'active' : '' }}" href="/dashboard/services">
-              <span data-feather="award"></span>
-              Service
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('dashboard/keys*') ? 'active' : '' }}" href="/dashboard/keys">
-              <span data-feather="key"></span>
-              PGP Key
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('dashboard/guidances*') ? 'active' : '' }}" href="/dashboard/guidances">
-              <span data-feather="book-open"></span>
-              File Panduan
-            </a>
-          </li>
-        
-          @endcan
-          @can('superadmin')          
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('dashboard/users*') ? 'active' : '' }}" href="/dashboard/users">
-              <span data-feather="users"></span>
-              User Management
-            </a>
-          </li>
-          @endcan
-        </ul>
-    </div>
-</nav>
+      <div class="divider">Administrator</div>
+      <li class="{{ Request::is('dashboard/categories*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
+        <a href="/dashboard/categories" class="flex gap-4 w-full h-full px-4 py-2">
+          <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/categories*') ? 'icon-active' : '' }}">
+            <i class="fa-solid fa-layer-group m-auto"></i>
+          </div>
+          <span class="self-center">
+            Post Category
+          </span>
+        </a>
+      </li>
+      <li class="{{ Request::is('dashboard/footers*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
+        <a href="/dashboard/footers" class="flex gap-4 w-full h-full px-4 py-2">
+          <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/footers*') ? 'icon-active' : '' }}">
+            <i class="fa-solid fa-shoe-prints m-auto"></i>
+          </div>
+          <span class="self-center">
+            Post Footer
+          </span>
+        </a>
+      </li>
+      <li class="{{ Request::is('dashboard/properties*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
+        <a href="/dashboard/properties" class="flex gap-4 w-full h-full px-4 py-2">
+          <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/properties*') ? 'icon-active' : '' }}">
+            <i class="fa-solid fa-images m-auto"></i>
+          </div>
+          <span class="self-center">
+            Image Property
+          </span>
+        </a>
+      </li>
+      <li class="{{ Request::is('dashboard/profils*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
+        <a href="/dashboard/profils" class="flex gap-4 w-full h-full px-4 py-2">
+          <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/profils*') ? 'icon-active' : '' }}">
+            <i class="fa-solid fa-id-card m-auto"></i>
+          </div>
+          <span class="self-center">
+            Profile
+          </span>
+        </a>
+      </li>
+      <li class="{{ Request::is('dashboard/files*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
+        <a href="/dashboard/files" class="flex gap-4 w-full h-full px-4 py-2">
+          <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/files*') ? 'icon-active' : '' }}">
+            <i class="fa-solid fa-file m-auto"></i>
+          </div>
+          <span class="self-center">
+            File RFC2350
+          </span>
+        </a>
+      </li>
+      <li class="{{ Request::is('dashboard/services*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
+        <a href="/dashboard/services" class="flex gap-4 w-full h-full px-4 py-2">
+          <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/services*') ? 'icon-active' : '' }}">
+            <i class="fa-solid fa-bell-concierge m-auto"></i>
+          </div>
+          <span class="self-center">
+            Service
+          </span>
+        </a>
+      </li>
+      <li class="{{ Request::is('dashboard/keys*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
+        <a href="/dashboard/keys" class="flex gap-4 w-full h-full px-4 py-2">
+          <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/keys*') ? 'icon-active' : '' }}">
+            <i class="fa-solid fa-key m-auto"></i>
+          </div>
+          <span class="self-center">
+            PGP Key
+          </span>
+        </a>
+      </li>
+      <li class="{{ Request::is('dashboard/guidances*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
+        <a href="/dashboard/guidances" class="flex gap-4 w-full h-full px-4 py-2">
+          <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/guidances*') ? 'icon-active' : '' }}">
+            <i class="fa-solid fa-file-lines m-auto"></i>
+          </div>
+          <span class="self-center">
+            File Panduan
+          </span>
+        </a>
+      </li>
+      @endcan
+      @can('superadmin')
+      <li class="{{ Request::is('dashboard/users*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
+        <a href="/dashboard/users" class="flex gap-4 w-full h-full px-4 py-2">
+          <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/users*') ? 'icon-active' : '' }}">
+            <i class="fa-solid fa-users-rectangle m-auto"></i>
+          </div>
+          <span class="self-center">
+            User Management
+          </span>
+        </a>
+      </li>
+      @endcan
+    </ul>
+  </div>
+</div>
+
+
+<!-- <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+  <div class="position-sticky pt-3">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
+          <span data-feather="home"></span>
+          Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="/dashboard/posts">
+          <span data-feather="file-text"></span>
+          My Post
+        </a>
+      </li>
+    </ul>
+
+    @can('admin')
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Administrator</span>
+    </h6>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">
+          <span data-feather="grid"></span>
+          Post Category
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/footers*') ? 'active' : '' }}" href="/dashboard/footers">
+          <span data-feather="book"></span>
+          Post Footer
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/properties*') ? 'active' : '' }}" href="/dashboard/properties">
+          <span data-feather="image"></span>
+          Image Property
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/profils*') ? 'active' : '' }}" href="/dashboard/profils">
+          <span data-feather="clipboard"></span>
+          Profile
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/files*') ? 'active' : '' }}" href="/dashboard/files">
+          <span data-feather="file"></span>
+          File RFC2350
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/services*') ? 'active' : '' }}" href="/dashboard/services">
+          <span data-feather="award"></span>
+          Service
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/keys*') ? 'active' : '' }}" href="/dashboard/keys">
+          <span data-feather="key"></span>
+          PGP Key
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/guidances*') ? 'active' : '' }}" href="/dashboard/guidances">
+          <span data-feather="book-open"></span>
+          File Panduan
+        </a>
+      </li>
+
+      @endcan
+      @can('superadmin')
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/users*') ? 'active' : '' }}" href="/dashboard/users">
+          <span data-feather="users"></span>
+          User Management
+        </a>
+      </li>
+      @endcan
+    </ul>
+  </div>
+</nav> -->

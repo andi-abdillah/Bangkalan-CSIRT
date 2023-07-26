@@ -3,3 +3,15 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+@layer components {
+    .bg-admin-active {
+        @apply bg-gradient-to-r from-violet-900 to-violet-600 drop-shadow-md;
+    }
+    .icon-active {
+        @apply bg-gradient-to-r from-pink-500 to-yellow-500;
+    }
+    .table-header {
+        @apply bg-violet-900;
+    }
+}

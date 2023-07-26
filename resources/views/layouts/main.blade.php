@@ -27,8 +27,7 @@
     }
 
     .hero {
-      @foreach ($propertiez->take(1) as $property)
-        background-image: url('{{ asset('storage/' . $property->image) }}');
+      @foreach ($propertiez->take(1) as $property) background-image: url('{{ asset(' storage/' . $property->image) }}');
       @endforeach
     }
 
