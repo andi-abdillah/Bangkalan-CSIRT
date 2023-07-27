@@ -1,4 +1,4 @@
-<div id="navbar" class="navbar bg-neutral/20 transition ease-in-out duration-500 rounded-[15px] drop-shadow-lg">
+<div id="navbar" class="navbar {{ Request::is('dashboard') ? 'bg-neutral/70' : 'bg-neutral/20' }} transition ease-in-out duration-500 rounded-[15px] drop-shadow-lg">
   <div class="navbar-start w-full">
     <div class="drawer-content flex flex-col items-center justify-center">
       <label for="my-drawer-2" class="btn btn-ghost drawer-button lg:hidden">
