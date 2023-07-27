@@ -31,7 +31,7 @@
           <td class="p-3">{{ $profil->link }}</td>
           <td class="p-3">{{ $profil->content }}</td>
           <td class="p-3 flex gap-2">
-            <a class="icon-show tooltip" data-tip="Show" href="/dashboard/profils/{{ ($profil->slug) }}"">
+            <a class="icon-show tooltip" data-tip="Show" href="/dashboard/profils/{{ ($profil->slug) }}">
               <span class=" material-symbols-rounded">
               visibility
               </span>

@@ -39,7 +39,7 @@
     <div class="mb-3">
       <label for="image" class="text-xl font-bold">Post Image</label>
       <img class="img-preview my-3 w-64 rounded-lg">
-      <input type="file" class="file-input file-input-bordered file-input-secondary w-full max-w-xs @error('image') is-invalid @enderror" id="image" name="image" onchange="previewImage()" required />
+      <input type="file" class="file-input file-input-bordered file-input-secondary w-full @error('image') is-invalid @enderror" id="image" name="image" onchange="previewImage()" required />
       @error('image')
       <div class="invalid-feedback">{{ $message }}</div>
       @enderror

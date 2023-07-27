@@ -21,7 +21,7 @@
             <li>Email : {{ $footer->email }}</li>
             <li>Telephone : {{ $footer->telephone }}</li>
             @foreach ($keys->take(1) as $key)
-            <li>PGP key dapat diunduh <a class="underline decoration-primary" href="{{'storage/' .  $key->path }}""> di sini</a> </li>
+            <li>PGP key dapat diunduh <a class="underline decoration-primary" href="{{'storage/' .  $key->path }}"> di sini</a> </li>
             @endforeach
           </ul>
           @endforeach
