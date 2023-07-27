@@ -1,54 +1,55 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Create a Property</h1>
+<section class="mb-4">
+  <h1 class="text-2xl font-bold my-4">Create a Property</h1>
+  <div class="divider"></div>
+  <form method="post" action="/dashboard/properties" class="mb-5" enctype="multipart/form-data">
+    @csrf
+    <div class="mb-3">
+      <label for="name" class="text-xl font-bold">Name</label>
+      <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name" required value="{{ old('name') }}">
+      @error('name')
+      <div class="invalid-feedback">
+        {{ $message }}
+      </div>
+      @enderror
     </div>
 
-    <div class="col-lg-8">
-        <form method="post" action="/dashboard/properties" class="mb-5" enctype="multipart/form-data">
-            @csrf
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required value="{{ old('name') }}">
-              @error('name')
-              <div class="invalid-feedback">
-                  {{ $message }}
-              </div>
-              @enderror
-            </div>
-
-            <div class="mb-3">
-              <label for="property" class="form-label">Property</label>
-              <select class="form-select" id="property" name="property">
-                <option value="Logo" >Logo</option>
-                <option value="Banner" >Banner</option>
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <label for="image" class="form-label">Image Property</label>
-              <img class="img-preview img-fluid mb-3 col-sm-5">
-              <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
-              @error('image')
-                <div class="invalid-feedback">{{ $message }}</div>
-              @enderror
-            </div>
-
-            <button type="submit" class="btn btn-primary">Create Property</button>
-        </form>
+    <div class="mb-3">
+      <label for="property" class="text-xl font-bold">Property</label>
+      <select class="form-select" id="property" name="property">
+        <option value="Logo">Logo</option>
+        <option value="Banner">Banner</option>
+      </select>
     </div>
 
-    <script>
-        function previewImage(){
-          const image = document.querySelector('#image');
-          const imgPreview = document.querySelector('.img-preview');
+    <div class="mb-3">
+      <label for="image" class="text-xl font-bold">Image Property</label>
+      <img class="img-preview my-3 w-64 rounded-lg">
+      <input class="file-input file-input-bordered file-input-secondary w-full max-w-xs @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+      @error('image')
+      <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
+    </div>
+    <button type="submit" class="btn btn-add">
+      Create Property
+      <span class="material-symbols-rounded">
+        check_circle
+      </span>
+    </button>
+  </form>
+</section>
 
-          imgPreview.style.display = 'block';
+<script>
+  function previewImage() {
+    const image = document.querySelector('#image');
+    const imgPreview = document.querySelector('.img-preview');
 
-          const blob = URL.createObjectURL(image.files[0]);imgPreview.src = blob;
-        }
-    </script>
+    imgPreview.style.display = 'block';
+
+    const blob = URL.createObjectURL(image.files[0]);
+    imgPreview.src = blob;
+  }
+</script>
 @endsection
-
-

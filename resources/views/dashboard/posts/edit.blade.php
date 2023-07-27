@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<section>
+<section class="mb-4">
   <h1 class="text-2xl font-bold my-4">Edit a Post</h1>
   <div class="divider"></div>
   <form method="post" action="/dashboard/posts/{{ $post->slug }}" class="mb-5" enctype="multipart/form-data">

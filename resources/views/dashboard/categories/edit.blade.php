@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class="col-lg-8">
+<section class="mb-4">
   <h1 class="text-2xl font-bold my-4">Edit a Category</h1>
   <div class="divider"></div>
   <form method="post" action="/dashboard/categories/{{ $category->slug }}" class="mb-5">
@@ -33,7 +33,7 @@
       </span>
     </button>
   </form>
-</div>
+</section>
 
 <script>
   const name = document.querySelector('#name');

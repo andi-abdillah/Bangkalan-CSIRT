@@ -3,12 +3,12 @@
 @section('container')
 
 @if (session()->has('success'))
-<div class="alert alert-success col-lg-8" role="alert">
+<div class="alert alert-success" role="alert">
   {{ session('success') }}
 </div>
 @endif
 
-<div class="table-responsive col-lg-8 mb-4">
+<section class="mb-4">
   <h1 class="text-2xl font-bold my-4">Post Category</h1>
   <div class="divider"></div>
   <a href="/dashboard/categories/create" class="btn btn-add mb-3">Create a New Category <span class="material-symbols-rounded">add</span></a>
@@ -47,33 +47,5 @@
       </tbody>
     </table>
   </div>
-
-
-
-  <!-- <table class="table table-striped table-sm">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Category Name</th>
-        <th scope="col" class="text-center">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($categories as $category)
-      <tr>
-        <td>{{ $loop->iteration }}</td>
-        <td>{{ $category->name }}</td>
-        <td class="text-center">
-          <a href="/dashboard/categories/{{ $category->slug }}/edit" class="badge bg-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span data-feather="edit"></span></a>
-          <form action="/dashboard/categories/{{ $category->slug }}" method="post" class="d-inline">
-            @method('delete')
-            @csrf
-            <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span data-feather="x-circle"></span></button>
-          </form>
-        </td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table> -->
-</div>
+</section>
 @endsection

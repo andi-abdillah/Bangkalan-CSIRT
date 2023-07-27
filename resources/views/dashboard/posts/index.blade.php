@@ -7,7 +7,7 @@
   {{ session('success') }}
 </div>
 @endif
-<div class="">
+<section class="mb-4">
   <h1 class="text-2xl font-bold my-4">My Posts</h1>
   <div class="divider"></div>
   <a href="/dashboard/posts/create" class="btn btn-add mb-3">Create a New Post <span class="material-symbols-rounded">add</span></a>
@@ -59,5 +59,5 @@
       </tbody>
     </table>
   </div>
-</div>
+</section>
 @endsection
