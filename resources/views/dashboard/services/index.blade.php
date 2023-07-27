@@ -34,7 +34,6 @@
                 visibility
               </span>
             </a>
-            @can('admin')
             <a class="icon-edit tooltip" data-tip="Edit" href="/dashboard/services/{{ ($service->slug) }}/edit">
               <span class="material-symbols-rounded">
                 edit
@@ -49,7 +48,6 @@
                 </span>
               </button>
             </form>
-            @endcan
           </td>
         </tr>
         @endforeach
