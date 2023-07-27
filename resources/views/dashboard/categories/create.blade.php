@@ -33,8 +33,6 @@
   </form>
 </section>
 
-
-
 <script nonce="{{ csp_nonce() }}">
   const name = document.querySelector('#name');
   const slug = document.querySelector('#slug');

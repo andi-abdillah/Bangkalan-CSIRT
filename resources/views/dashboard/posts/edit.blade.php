@@ -16,7 +16,6 @@
       </div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="slug" class="text-xl font-bold">Slug</label>
       <input type="text" class="form-input @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug', $post->slug) }}">
@@ -26,7 +25,6 @@
       </div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="category" class="text-xl font-bold">Category</label>
       <select class="form-select" name="category_id">
@@ -39,7 +37,6 @@
         @endforeach
       </select>
     </div>
-
     <div class="mb-3">
       <label for="image" class="text-xl font-bold">Post Image</label>
       @if ($post->image)
@@ -52,7 +49,6 @@
       <div class="invalid-feedback">{{ $message }}</div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="body" class="text-xl font-bold">Body</label>
       @error('body')
@@ -61,7 +57,6 @@
       <input id="body" type="hidden" name="body" value="{{ old('body', $post->body) }}">
       <trix-editor class="trix-content" input="body"></trix-editor>
     </div>
-
     <div class="mb-3">
       <input type="checkbox" class="form-check-input @error('published') is-invalid @enderror" id="published" name="published" {{  $post->published ? 'checked' : '' }} value="">
       <label for="flexCheckDefault" class="form-check-label">Publish</label>

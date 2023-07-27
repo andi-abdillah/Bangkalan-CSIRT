@@ -15,7 +15,6 @@
       </div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="address" class="text-xl font-bold">Address</label>
       <input type="text" class="form-input @error('address') is-invalid @enderror" id="address" name="address" required value="{{ old('address') }}">
@@ -25,7 +24,6 @@
       </div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="maps" class="text-xl font-bold">Maps</label>
       <textarea class="form-textarea @error('maps') is-invalid @enderror" id="maps" name="maps" required rows="5">{{ old('maps') }}</textarea>
@@ -35,7 +33,6 @@
       </div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="telephone" class="text-xl font-bold">Telephone</label>
       <input type="text" class="form-input @error('telephone') is-invalid @enderror" id="telephone" name="telephone" required value="{{ old('telephone') }}">
@@ -45,7 +42,6 @@
       </div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="email" class="text-xl font-bold">Email</label>
       <input type="text" class="form-input @error('email') is-invalid @enderror" id="email" name="email" required value="{{ old('email') }}">

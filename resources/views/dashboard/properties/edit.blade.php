@@ -25,7 +25,6 @@
       </div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="image" class="text-xl font-bold">Image Property</label>
       @if ($property->image)

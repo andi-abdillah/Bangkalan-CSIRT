@@ -12,7 +12,6 @@
   <h1 class="text-2xl font-bold my-4">Image Property</h1>
   <div class="divider"></div>
   <a href="/dashboard/properties/create" class="btn btn-add mb-3">Create a New Property <span class="material-symbols-rounded">add</span></a>
-
   <div class="p-4 bg-neutral/70 rounded-[20px] overflow-x-auto">
     <table class="table">
       <thead class="text-white">

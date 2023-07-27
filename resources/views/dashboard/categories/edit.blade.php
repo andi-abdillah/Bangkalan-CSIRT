@@ -16,7 +16,6 @@
       </div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="slug" class="text-xl font-bold">Slug</label>
       <input type="text" class="form-input @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug', $category->slug) }}" readonly>

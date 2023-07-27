@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class="hero w-5/6 h-96 my-6 mx-auto rounded-[25px] overflow-hidden" style="background-image: url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);">
+<section class="hero w-5/6 h-96 my-6 mx-auto rounded-[25px] overflow-hidden" style="background-image: url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);">
   <div class="hero-overlay bg-opacity-60"></div>
   <div class="text-center text-neutral-content">
     <div class="max-w-md">
@@ -13,5 +13,5 @@
       </a>
     </div>
   </div>
-</div>
+</section>
 @endsection

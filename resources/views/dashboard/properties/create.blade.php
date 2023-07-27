@@ -15,7 +15,6 @@
       </div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="property" class="text-xl font-bold">Property</label>
       <select class="form-select" id="property" name="property">
@@ -23,7 +22,6 @@
         <option value="Banner">Banner</option>
       </select>
     </div>
-
     <div class="mb-3">
       <label for="image" class="text-xl font-bold">Image Property</label>
       <img class="img-preview my-3 w-64 rounded-lg">

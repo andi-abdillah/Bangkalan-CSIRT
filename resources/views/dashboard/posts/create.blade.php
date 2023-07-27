@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<section>
+<section class="mb-4">
   <h1 class="text-2xl font-bold my-4">Create a New Post</h1>
   <div class="divider"></div>
   <form method="post" action="/dashboard/posts" class="mb-5" enctype="multipart/form-data">
@@ -15,7 +15,6 @@
       </div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="slug" class="text-xl font-bold">Slug</label>
       <input type="text" id="slug" name="slug" value="{{ old('slug') }}" class="form-input @error('slug') is-invalid @enderror" required />
@@ -25,7 +24,6 @@
       </div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="category" class="text-xl font-bold">Category</label>
       <select name="category_id" class="form-select">
@@ -38,7 +36,6 @@
         @endforeach
       </select>
     </div>
-
     <div class="mb-3">
       <label for="image" class="text-xl font-bold">Post Image</label>
       <img class="img-preview my-3 w-64 rounded-lg">
@@ -47,16 +44,14 @@
       <div class="invalid-feedback">{{ $message }}</div>
       @enderror
     </div>
-
     <div class="mb-3">
       <label for="body" class="text-xl font-bold">Body</label>
       @error('body')
-      <p class="text-warning">{{ $message }}</p>
+      <p class="text-orange-600">{{ $message }}</p>
       @enderror
       <input id="body" type="hidden" name="body" value="{{ old('body') }}">
       <trix-editor class="trix-content" input="body"></trix-editor>
     </div>
-
     @can('admin')
     <div class="mb-3 flex">
       <input type="checkbox" class="checkbox checkbox-info" id="published" name="published" value="" />
