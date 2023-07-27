@@ -16,7 +16,7 @@
         <div>
           <span class="footer-title">Contact</span>
           @foreach ($footers->take(1) as $footer)
-          <ul>
+          <ul class="list-none">
             <li>{{ $footer->address }}</li>
             <li>Email : {{ $footer->email }}</li>
             <li>Telephone : {{ $footer->telephone }}</li>

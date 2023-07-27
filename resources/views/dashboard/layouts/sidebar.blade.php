@@ -2,11 +2,13 @@
   <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
   <div class="drawer-side">
     <label for="my-drawer-2" class="drawer-overlay"></label>
-    <ul class="flex flex-col gap-1.5 w-72 bg-neutral rounded-[20px] p-4 my-auto lg:m-5 backdrop-blur-md bg-neutral drop-shadow-lg">
+    <ul class="flex flex-col gap-1.5 w-72 h-full bg-neutral rounded-[20px] p-4 my-auto lg:m-5 backdrop-blur-md bg-neutral drop-shadow-lg">
       <li class="{{ Request::is('dashboard') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
         <a href="/dashboard" class="flex gap-4 w-full h-full px-4 py-2">
           <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard') ? 'icon-active' : '' }}">
-            <i class="fa-solid fa-house m-auto"></i>
+            <span class="material-symbols-rounded m-auto">
+              dashboard
+            </span>
           </div>
           <span class="self-center">
             Dashboard
@@ -16,7 +18,9 @@
       <li class="{{ Request::is('dashboard/posts*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
         <a href="/dashboard/posts" class="flex gap-4 w-full h-full px-4 py-2">
           <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/posts*') ? 'icon-active' : '' }}">
-            <i class="fa-solid fa-blog m-auto"></i>
+            <span class="material-symbols-rounded m-auto">
+              post_add
+            </span>
           </div>
           <span class="self-center">
             My Post
@@ -28,7 +32,9 @@
       <li class="{{ Request::is('dashboard/categories*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
         <a href="/dashboard/categories" class="flex gap-4 w-full h-full px-4 py-2">
           <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/categories*') ? 'icon-active' : '' }}">
-            <i class="fa-solid fa-layer-group m-auto"></i>
+            <span class="material-symbols-rounded m-auto">
+              category
+            </span>
           </div>
           <span class="self-center">
             Post Category
@@ -38,7 +44,9 @@
       <li class="{{ Request::is('dashboard/footers*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
         <a href="/dashboard/footers" class="flex gap-4 w-full h-full px-4 py-2">
           <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/footers*') ? 'icon-active' : '' }}">
-            <i class="fa-solid fa-shoe-prints m-auto"></i>
+            <span class="material-symbols-rounded m-auto">
+              barefoot
+            </span>
           </div>
           <span class="self-center">
             Post Footer
@@ -48,7 +56,9 @@
       <li class="{{ Request::is('dashboard/properties*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
         <a href="/dashboard/properties" class="flex gap-4 w-full h-full px-4 py-2">
           <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/properties*') ? 'icon-active' : '' }}">
-            <i class="fa-solid fa-images m-auto"></i>
+            <span class="material-symbols-rounded m-auto">
+              photo_library
+            </span>
           </div>
           <span class="self-center">
             Image Property
@@ -58,7 +68,9 @@
       <li class="{{ Request::is('dashboard/profils*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
         <a href="/dashboard/profils" class="flex gap-4 w-full h-full px-4 py-2">
           <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/profils*') ? 'icon-active' : '' }}">
-            <i class="fa-solid fa-id-card m-auto"></i>
+            <span class="material-symbols-rounded m-auto">
+              assignment_ind
+            </span>
           </div>
           <span class="self-center">
             Profile
@@ -68,7 +80,9 @@
       <li class="{{ Request::is('dashboard/files*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
         <a href="/dashboard/files" class="flex gap-4 w-full h-full px-4 py-2">
           <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/files*') ? 'icon-active' : '' }}">
-            <i class="fa-solid fa-file m-auto"></i>
+            <span class="material-symbols-rounded m-auto">
+              description
+            </span>
           </div>
           <span class="self-center">
             File RFC2350
@@ -78,7 +92,9 @@
       <li class="{{ Request::is('dashboard/services*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
         <a href="/dashboard/services" class="flex gap-4 w-full h-full px-4 py-2">
           <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/services*') ? 'icon-active' : '' }}">
-            <i class="fa-solid fa-bell-concierge m-auto"></i>
+            <span class="material-symbols-rounded m-auto">
+              support_agent
+            </span>
           </div>
           <span class="self-center">
             Service
@@ -88,7 +104,9 @@
       <li class="{{ Request::is('dashboard/keys*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
         <a href="/dashboard/keys" class="flex gap-4 w-full h-full px-4 py-2">
           <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/keys*') ? 'icon-active' : '' }}">
-            <i class="fa-solid fa-key m-auto"></i>
+            <span class="material-symbols-rounded m-auto">
+              vpn_key
+            </span>
           </div>
           <span class="self-center">
             PGP Key
@@ -98,7 +116,9 @@
       <li class="{{ Request::is('dashboard/guidances*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
         <a href="/dashboard/guidances" class="flex gap-4 w-full h-full px-4 py-2">
           <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/guidances*') ? 'icon-active' : '' }}">
-            <i class="fa-solid fa-file-lines m-auto"></i>
+            <span class="material-symbols-rounded m-auto">
+              developer_guide
+            </span>
           </div>
           <span class="self-center">
             File Panduan
@@ -110,7 +130,9 @@
       <li class="{{ Request::is('dashboard/users*') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
         <a href="/dashboard/users" class="flex gap-4 w-full h-full px-4 py-2">
           <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard/users*') ? 'icon-active' : '' }}">
-            <i class="fa-solid fa-users-rectangle m-auto"></i>
+            <span class="material-symbols-rounded m-auto">
+              group
+            </span>
           </div>
           <span class="self-center">
             User Management

@@ -8,7 +8,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
           </svg>
         </label>
-        <ul tabindex="0" class="dropdown-content mt-5 z-[1] p-2 shadow bg-neutral rounded-box w-52">
+        <ul tabindex="0" class="dropdown-content list-none mt-5 z-[1] p-2 shadow bg-neutral rounded-box w-52">
           <li class="m-2 p-2"><a class="link-underline {!! Request::is('/') ? 'link-active' : '' !!}" href="/">Beranda</a></li>
           <li class="m-2 p-2"><a class="link-underline {!! Request::is('profil') ? 'link-active' : '' !!}" href="/profil">Profil</a></li>
           <li class="m-2 p-2"><a class="link-underline {!! Request::is('posts') ? 'link-active' : '' !!}" href="/posts">Artikel</a></li>
@@ -25,7 +25,7 @@
       </a>
     </div>
     <div class="navbar-center hidden lg:flex">
-      <ul class="flex flex-row px-4 no-underline">
+      <ul class="flex flex-row px-4 no-underline list-none">
         <li class="m-2 p-2"><a class="link-underline {!! Request::is('/') ? 'link-active' : '' !!}" href="/">Beranda</a></li>
         <li class="m-2 p-2"><a class="link-underline {!! Request::is('profil') ? 'link-active' : '' !!}" href="/profil">Profil</a></li>
         <li class="m-2 p-2"><a class="link-underline {!! Request::is('posts') ? 'link-active' : '' !!}" href="/posts">Artikel</a></li>

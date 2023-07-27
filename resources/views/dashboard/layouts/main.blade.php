@@ -21,8 +21,8 @@
   <link rel="stylesheet" type="text/css" href="/css/trix.css">
   <script nonce="{{ csp_nonce() }}" type="text/javascript" src="/js/trix.js"></script>
 
-  <!-- font awesome  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <!-- Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,28 +42,6 @@
       text-align: justify;
       text-justify: inter-word;
     }
-
-    .table {
-      border-spacing: 0 8px;
-    }
-
-    i {
-      font-size: 1rem !important;
-    }
-
-    .table tr {
-      border-radius: 20px;
-    }
-
-    tr td:nth-child(n+6),
-    tr th:nth-child(n+6) {
-      border-radius: 0 .625rem .625rem 0;
-    }
-
-    tr td:nth-child(1),
-    tr th:nth-child(1) {
-      border-radius: .625rem 0 0 .625rem;
-    }
   </style>
 
   <!-- Custom styles for this template -->
@@ -72,11 +50,11 @@
 
 <body class="overflow-x-hidden">
   <div class="flex">
-    <aside class="fixed left-0 top-0 z-30">
+    <aside class="fixed left-0 top-0 z-50">
       @include('dashboard.layouts.sidebar')
     </aside>
-    <main class="relative w-full lg:ml-80 p-2 lg:p-4">
-      <header class="sticky top-5 z-50">
+    <main class="relative w-full lg:ml-80 p-3 lg:py-4 lg:px-6">
+      <header class="sticky top-5 z-30">
         @include('dashboard.layouts.header')
       </header>
       <main class="relative top-5">
@@ -91,9 +69,11 @@
     var navbar = document.getElementById("navbar");
     window.addEventListener('scroll', function() {
       if (window.pageYOffset > 50) {
+        navbar.classList.remove("bg-neutral/20");
         navbar.classList.add("backdrop-blur-md", "bg-neutral/70");
       } else {
         navbar.classList.remove("backdrop-blur-md", "bg-neutral/70");
+        navbar.classList.add("bg-neutral/20");
       }
     })
   </script>
