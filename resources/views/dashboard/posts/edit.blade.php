@@ -8,7 +8,7 @@
     @method('put')
     @csrf
     <div class="mb-3">
-      <label for="title" class="text-xl font-bold">Title</label>
+      <label for="title" class="text-xl">Title</label>
       <input type="text" class="form-input @error('title') is-invalid @enderror" id="title" name="title" required autofocus value="{{ old('title', $post->title) }}">
       @error('title')
       <div class="invalid-feedback">
@@ -17,7 +17,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="slug" class="text-xl font-bold">Slug</label>
+      <label for="slug" class="text-xl">Slug</label>
       <input type="text" class="form-input @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug', $post->slug) }}">
       @error('slug')
       <div class="invalid-feedback">
@@ -26,7 +26,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="category" class="text-xl font-bold">Category</label>
+      <label for="category" class="text-xl">Category</label>
       <select class="form-select" name="category_id">
         @foreach ($categories as $category)
         @if (old('category_id', $post->category_id) == $category->id)
@@ -38,7 +38,7 @@
       </select>
     </div>
     <div class="mb-3">
-      <label for="image" class="text-xl font-bold">Post Image</label>
+      <label for="image" class="text-xl">Post Image</label>
       @if ($post->image)
       <img src="{{ asset('storage/' . $post->image) }}" class="img-preview my-3 w-64 rounded-lg block">
       @else
@@ -50,16 +50,16 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="body" class="text-xl font-bold">Body</label>
+      <label for="body" class="text-xl">Body</label>
       @error('body')
       <p class="text-danger">{{ $message }}</p>
       @enderror
       <input id="body" type="hidden" name="body" value="{{ old('body', $post->body) }}">
       <trix-editor class="trix-content" input="body"></trix-editor>
     </div>
-    <div class="mb-3">
-      <input type="checkbox" class="form-check-input @error('published') is-invalid @enderror" id="published" name="published" checked="{{  $post->published ? 'checked' : '' }}" value="">
-      <label for="flexCheckDefault" class="form-check-label">Publish</label>
+    <div class="mb-3 flex">
+      <input type="checkbox" class="checkbox checkbox-info @error('published') is-invalid @enderror" id="published" name="published" {{  $post->published ? 'checked' : '' }} value="">
+      <label for="flexCheckDefault" class="text-xl mx-2">Publish</label>
       @error('published')
       <div class="invalid-feedback">
         {{ $message }}

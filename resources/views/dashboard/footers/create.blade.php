@@ -7,7 +7,7 @@
   <form method="post" action="/dashboard/footers" class="mb-5">
     @csrf
     <div class="mb-3">
-      <label for="name" class="text-xl font-bold">CSIRT Name</label>
+      <label for="name" class="text-xl">CSIRT Name</label>
       <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name" required autofocus value="{{ old('name') }}">
       @error('name')
       <div class="invalid-feedback">
@@ -16,7 +16,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="address" class="text-xl font-bold">Address</label>
+      <label for="address" class="text-xl">Address</label>
       <input type="text" class="form-input @error('address') is-invalid @enderror" id="address" name="address" required value="{{ old('address') }}">
       @error('address')
       <div class="invalid-feedback">
@@ -25,7 +25,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="maps" class="text-xl font-bold">Maps</label>
+      <label for="maps" class="text-xl">Maps</label>
       <textarea class="form-textarea @error('maps') is-invalid @enderror" id="maps" name="maps" required rows="5">{{ old('maps') }}</textarea>
       @error('maps')
       <div class="invalid-feedback">
@@ -34,7 +34,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="telephone" class="text-xl font-bold">Telephone</label>
+      <label for="telephone" class="text-xl">Telephone</label>
       <input type="text" class="form-input @error('telephone') is-invalid @enderror" id="telephone" name="telephone" required value="{{ old('telephone') }}">
       @error('telephone')
       <div class="invalid-feedback">
@@ -43,7 +43,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="email" class="text-xl font-bold">Email</label>
+      <label for="email" class="text-xl">Email</label>
       <input type="text" class="form-input @error('email') is-invalid @enderror" id="email" name="email" required value="{{ old('email') }}">
       @error('email')
       <div class="invalid-feedback">

@@ -7,7 +7,7 @@
   <form method="post" action="/dashboard/properties" class="mb-5" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
-      <label for="name" class="text-xl font-bold">Name</label>
+      <label for="name" class="text-xl">Name</label>
       <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name" required value="{{ old('name') }}">
       @error('name')
       <div class="invalid-feedback">
@@ -16,14 +16,14 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="property" class="text-xl font-bold">Property</label>
+      <label for="property" class="text-xl">Property</label>
       <select class="form-select" id="property" name="property">
         <option value="Logo">Logo</option>
         <option value="Banner">Banner</option>
       </select>
     </div>
     <div class="mb-3">
-      <label for="image" class="text-xl font-bold">Image Property</label>
+      <label for="image" class="text-xl">Image Property</label>
       <img class="img-preview my-3 w-64 rounded-lg">
       <input class="file-input file-input-bordered file-input-secondary w-full @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
       @error('image')

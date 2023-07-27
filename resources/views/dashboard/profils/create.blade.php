@@ -7,7 +7,7 @@
   <form method="post" action="/dashboard/profils" class="mb-5">
     @csrf
     <div class="mb-3">
-      <label for="name" class="text-xl font-bold">Name</label>
+      <label for="name" class="text-xl">Name</label>
       <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name" required autofocus value="{{ old('name') }}">
       @error('name')
       <div class="invalid-feedback">
@@ -16,7 +16,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="link" class="text-xl font-bold">Link Sistem Ticketing</label>
+      <label for="link" class="text-xl">Link Sistem Ticketing</label>
       <textarea class="form-textarea @error('link') is-invalid @enderror" id="link" name="link" required rows="2">{{ old('link') }}</textarea>
       @error('link')
       <div class="invalid-feedback">
@@ -25,7 +25,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="content" class="text-xl font-bold">Content</label>
+      <label for="content" class="text-xl">Content</label>
       @error('content')
       <p class="text-orange-600">{{ $message }}</p>
       @enderror

@@ -26,7 +26,7 @@
 
         @if ($posts->count())
         <div class="flex flex-col my-4 gap-4">
-            <img class="w-11/12 md:w-10/12 lg:w-3/5 mx-auto" src="{{ asset('storage/' . $posts[0]->image) }}" alt="{{ $posts[0]->category->name }}">
+            <img class="w-11/12 md:w-10/12 lg:w-3/5 mx-auto rounded-[25px]" src="{{ asset('storage/' . $posts[0]->image) }}" alt="{{ $posts[0]->category->name }}">
             <div class="flex flex-col gap-4 text-center w-11/12 lg:w-3/4 mx-auto">
                 <a class="text-2xl" href="/posts/{{ $posts[0]->slug }}">{{ $posts[0]->title }}</a>
                 <p class="text-lg">

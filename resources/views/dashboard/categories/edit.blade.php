@@ -8,7 +8,7 @@
     @method('put')
     @csrf
     <div class="mb-3">
-      <label for="name" class="text-xl font-bold">Category</label>
+      <label for="name" class="text-xl">Category</label>
       <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name" required autofocus value="{{ old('name', $category->name) }}">
       @error('name')
       <div class="invalid-feedback">
@@ -17,7 +17,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="slug" class="text-xl font-bold">Slug</label>
+      <label for="slug" class="text-xl">Slug</label>
       <input type="text" class="form-input @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug', $category->slug) }}" readonly>
       @error('slug')
       <div class="invalid-feedback">

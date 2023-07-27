@@ -7,7 +7,7 @@
   <form method="post" action="/dashboard/posts" class="mb-5" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
-      <label for="title" class="text-xl font-bold">Title</label>
+      <label for="title" class="text-xl">Title</label>
       <input type="text" id="title" name="title" value="{{ old('title') }}" class="form-input @error('title') is-invalid @enderror" autofocus required />
       @error('title')
       <div class="invalid-feedback">
@@ -16,7 +16,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="slug" class="text-xl font-bold">Slug</label>
+      <label for="slug" class="text-xl">Slug</label>
       <input type="text" id="slug" name="slug" value="{{ old('slug') }}" class="form-input @error('slug') is-invalid @enderror" required />
       @error('slug')
       <div class="invalid-feedback">
@@ -25,7 +25,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="category" class="text-xl font-bold">Category</label>
+      <label for="category" class="text-xl">Category</label>
       <select name="category_id" class="form-select">
         @foreach ($categories as $category)
         @if (old('category_id') == $category->id)
@@ -37,7 +37,7 @@
       </select>
     </div>
     <div class="mb-3">
-      <label for="image" class="text-xl font-bold">Post Image</label>
+      <label for="image" class="text-xl">Post Image</label>
       <img class="img-preview my-3 w-64 rounded-lg">
       <input type="file" class="file-input file-input-bordered file-input-secondary w-full @error('image') is-invalid @enderror" id="image" name="image" onchange="previewImage()" required />
       @error('image')
@@ -45,7 +45,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="body" class="text-xl font-bold">Body</label>
+      <label for="body" class="text-xl">Body</label>
       @error('body')
       <p class="text-orange-600">{{ $message }}</p>
       @enderror
@@ -55,7 +55,7 @@
     @can('admin')
     <div class="mb-3 flex">
       <input type="checkbox" class="checkbox checkbox-info" id="published" name="published" value="" />
-      <label for="published" class="text-xl font-bold mx-2">Publish</label>
+      <label for="published" class="text-xl mx-2">Publish</label>
       @error('published')
       <div class="invalid-feedback">
         {{ $message }}

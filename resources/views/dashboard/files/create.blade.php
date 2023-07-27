@@ -7,7 +7,7 @@
   <form method="post" action="/dashboard/files" class="mb-5" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
-      <label for="file" class="text-xl font-bold">File</label>
+      <label for="file" class="text-xl">File</label>
       <input type="file" class="file-input file-input-bordered file-input-secondary w-full @error('file') is-invalid @enderror" id="file" name="file" required value="{{ old('file') }}">
       @error('file')
       <div class="invalid-feedback">

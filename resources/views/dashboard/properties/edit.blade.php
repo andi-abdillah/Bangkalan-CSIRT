@@ -8,7 +8,7 @@
     @method('put')
     @csrf
     <div class="mb-3">
-      <label for="property" class="text-xl font-bold">Property</label>
+      <label for="property" class="text-xl">Property</label>
       <input type="text" class="form-input @error('property') is-invalid @enderror" id="property" name="property" required value="{{ old('property', $property->property) }}" readonly>
       @error('property')
       <div class="invalid-feedback">
@@ -17,7 +17,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="name" class="text-xl font-bold">Name</label>
+      <label for="name" class="text-xl">Name</label>
       <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name" required value="{{ old('name', $property->name) }}" autofocus>
       @error('name')
       <div class="invalid-feedback">
@@ -26,7 +26,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="image" class="text-xl font-bold">Image Property</label>
+      <label for="image" class="text-xl">Image Property</label>
       @if ($property->image)
       <img src="{{ asset('storage/' . $property->image) }}" class="img-preview my-3 w-64 rounded-lg block">
       @else

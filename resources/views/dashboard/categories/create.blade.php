@@ -7,7 +7,7 @@
   <form method="post" action="/dashboard/categories" class="mb-5">
     @csrf
     <div class="mb-3">
-      <label for="name" class="text-xl font-bold">Name</label>
+      <label for="name" class="text-xl">Name</label>
       <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name" required autofocus value="{{ old('name') }}">
       @error('name')
       <div class="invalid-feedback">
@@ -16,7 +16,7 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="slug" class="text-xl font-bold">Slug</label>
+      <label for="slug" class="text-xl">Slug</label>
       <input type="text" class="form-input @error('slug') is-invalid @enderror" id="slug" name="slug" readonly required value="{{ old('slug') }}">
       @error('slug')
       <div class="invalid-feedback">
