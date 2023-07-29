@@ -2,7 +2,7 @@
   <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
   <div class="drawer-side">
     <label for="my-drawer-2" class="drawer-overlay"></label>
-    <ul class="flex flex-col gap-1.5 w-72 h-full p-4 my-auto lg:m-5 bg-gradient-to-r from-neutral to-neutral/60 backdrop-blur-md drop-shadow-lg rounded-[20px]">
+    <ul class="flex flex-col gap-1.5 w-72 h-max p-5 my-auto lg:m-5 bg-gradient-to-r from-neutral to-neutral/60 backdrop-blur-md drop-shadow-lg rounded-[20px]">
       <li class="{{ Request::is('dashboard') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
         <a href="/dashboard" class="flex gap-4 w-full h-full px-4 py-2">
           <div class="flex w-8 h-8 self-center rounded-lg bg-neutral-focus drop-shadow-lg {{ Request::is('dashboard') ? 'icon-active' : '' }}">

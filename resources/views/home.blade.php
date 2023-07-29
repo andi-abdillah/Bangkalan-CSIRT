@@ -14,10 +14,10 @@
       $lastPost = $posts->last();
       @endphp
       @foreach ($posts->take(6) as $post)
-      <div class="flex flex-wrap lg:flex-row justify-center m-6">
+      <div class="flex flex-wrap lg:flex-row justify-center mx-3 my-6 md:m-6">
         <div class="flex items-center justify-center lg:justify-start w-full lg:w-1/2">
-          <div id="laptop-container" class="w-[310px] h-[180px] md:w-[500px] md:h-[350px] lg:w-[34rem] lg:h-[21rem]">
-            <img class="child-img w-[210px] h-[145px] md:w-[410px] md:h-[280px] lg:w-[25rem] lg:h-[17rem] mt-3 md:mt-6 lg:mt-6 rounded md:rounded-xl lg:rounded-xl" src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" />
+          <div id="laptop-container" class="w-[22rem] h-[14rem] md:w-[30rem] md:h-[19rem] lg:w-[34rem] lg:h-[21rem]">
+            <img class="child-img w-[16.5rem] h-[11rem] md:w-[22.5rem] md:h-[15rem] lg:w-[25rem] lg:h-[17rem] mt-4 md:mt-5 lg:mt-6 rounded md:rounded-xl" src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" />
           </div>
         </div>
         <div class="flex flex-col gap-3 items-center lg:items-start lg:justify-center w-full lg:w-1/2 text-center lg:text-start">

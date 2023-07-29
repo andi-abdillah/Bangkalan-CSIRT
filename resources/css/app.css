@@ -12,25 +12,25 @@
         @apply bg-gradient-to-r from-pink-500 to-yellow-500;
     }
     .btn-add {
-        @apply bg-violet-700 hover:bg-violet-900 rounded-[13px] drop-shadow-md;
+        @apply bg-violet-700 hover:bg-violet-900 border-0 rounded-[13px] drop-shadow-md;
     }
     .btn-back {
-        @apply bg-emerald-600 hover:bg-emerald-700 rounded-[13px] drop-shadow-md;
+        @apply bg-emerald-600 hover:bg-emerald-700 border-0 rounded-[13px] drop-shadow-md;
     }
     .btn-edit {
-        @apply bg-yellow-600 hover:bg-yellow-700 rounded-[13px] drop-shadow-md;
+        @apply bg-yellow-600 hover:bg-yellow-700 border-0 rounded-[13px] drop-shadow-md;
     }
     .btn-delete {
-        @apply bg-orange-600 hover:bg-orange-700 rounded-[13px] drop-shadow-md;
+        @apply bg-orange-600 hover:bg-orange-700 border-0 rounded-[13px] drop-shadow-md;
     }
     .icon-show {
-        @apply text-sky-600;
+        @apply text-sky-600 hover:text-sky-800;
     }
     .icon-edit {
-        @apply text-yellow-600;
+        @apply text-yellow-600 hover:text-yellow-800;
     }
     .icon-delete {
-        @apply text-orange-600;
+        @apply text-orange-600 hover:text-orange-800;
     }
     .form-input {
         @apply input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-violet-700;
@@ -42,9 +42,9 @@
         @apply select bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-violet-700 font-bold;
     }
     ul {
-     @apply list-disc; 
+        @apply list-disc;
     }
     ol {
-     @apply list-decimal; 
+        @apply list-decimal;
     }
 }

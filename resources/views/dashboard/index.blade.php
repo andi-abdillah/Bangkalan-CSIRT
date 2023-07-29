@@ -7,7 +7,7 @@
     <div class="text-center text-neutral-content">
       <div class="max-w-md">
         <h1 class="mb-5 text-2xl md:text-4xl lg:text-5xl font-bold">Welcome back, {{ auth()->user()->name }}</h1>
-        <a href="/dashboard/posts" class="btn rounded-[13px] btn-add">Posting Sesuatu
+        <a href="/dashboard/posts" class="btn btn-add rounded-[13px]">Posting Sesuatu
           <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
           </svg>
