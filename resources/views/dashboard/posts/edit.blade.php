@@ -11,18 +11,18 @@
       <label for="title" class="text-xl">Title</label>
       <input type="text" class="form-input @error('title') is-invalid @enderror" id="title" name="title" required autofocus value="{{ old('title', $post->title) }}">
       @error('title')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <div class="mb-3">
       <label for="slug" class="text-xl">Slug</label>
       <input type="text" class="form-input @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug', $post->slug) }}">
       @error('slug')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <div class="mb-3">
@@ -46,7 +46,9 @@
       @endif
       <input class="file-input file-input-bordered file-input-secondary w-full @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
       @error('image')
-      <div class="invalid-feedback">{{ $message }}</div>
+      <p class="text-red-500 font-light">
+        {{ $message }}
+      </p>
       @enderror
     </div>
     <div class="mb-3">
@@ -61,9 +63,9 @@
       <input type="checkbox" class="checkbox checkbox-info @error('published') is-invalid @enderror" id="published" name="published" {{  $post->published ? 'checked' : '' }} value="">
       <label for="flexCheckDefault" class="text-xl mx-2">Publish</label>
       @error('published')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <button type="submit" class="btn btn-add">

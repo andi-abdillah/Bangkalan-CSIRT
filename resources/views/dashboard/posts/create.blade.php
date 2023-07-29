@@ -10,18 +10,18 @@
       <label for="title" class="text-xl">Title</label>
       <input type="text" id="title" name="title" value="{{ old('title') }}" class="form-input @error('title') is-invalid @enderror" autofocus required />
       @error('title')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <div class="mb-3">
       <label for="slug" class="text-xl">Slug</label>
       <input type="text" id="slug" name="slug" value="{{ old('slug') }}" class="form-input @error('slug') is-invalid @enderror" required />
       @error('slug')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <div class="mb-3">
@@ -41,7 +41,9 @@
       <img class="img-preview my-3 w-64 rounded-lg">
       <input type="file" class="file-input file-input-bordered file-input-secondary w-full @error('image') is-invalid @enderror" id="image" name="image" onchange="previewImage()" required />
       @error('image')
-      <div class="invalid-feedback">{{ $message }}</div>
+      <p class="text-red-500 font-light">
+        {{ $message }}
+      </p>
       @enderror
     </div>
     <div class="mb-3">
@@ -57,9 +59,9 @@
       <input type="checkbox" class="checkbox checkbox-info" id="published" name="published" value="" />
       <label for="published" class="text-xl mx-2">Publish</label>
       @error('published')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     @endcan

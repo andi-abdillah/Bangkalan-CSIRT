@@ -11,9 +11,9 @@
       <label for="name" class="text-xl">Name</label>
       <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name" required autofocus value="{{ old('name', $service->name) }}">
       @error('name')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <div class="mb-3">

@@ -11,18 +11,18 @@
       <label for="property" class="text-xl">Property</label>
       <input type="text" class="form-input @error('property') is-invalid @enderror" id="property" name="property" required value="{{ old('property', $property->property) }}" readonly>
       @error('property')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <div class="mb-3">
       <label for="name" class="text-xl">Name</label>
       <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name" required value="{{ old('name', $property->name) }}" autofocus>
       @error('name')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <div class="mb-3">
@@ -34,7 +34,9 @@
       @endif
       <input class="file-input file-input-bordered file-input-secondary w-full @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
       @error('image')
-      <div class="invalid-feedback">{{ $message }}</div>
+      <p class="text-red-500 font-light">
+        {{ $message }}
+      </p>
       @enderror
     </div>
     <button type="submit" class="btn btn-add">

@@ -29,7 +29,7 @@ class RegisterController extends Controller
             'files' => File::latest()->get(),
             'keys' => Key::latest()->get(),
             'propertiez'  => ImageProperty::select('image')->where('property', 'Banner')->get(),
-            'properties' => ImageProperty::where('property', 'Logo')->get(),
+            'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
         ]);
 
     }

@@ -11,6 +11,7 @@
 <section class="mb-4">
   <h1 class="text-2xl font-bold my-4">User Management</h1>
   <div class="divider"></div>
+  <a href="/register" class="btn btn-add mb-3">Create A New Account <span class="material-symbols-rounded">person_add</span></a>
   <div class="p-4 bg-neutral/70 rounded-[20px] overflow-x-auto">
     <table class="table">
       <thead class="text-white">

@@ -10,9 +10,9 @@
       <label for="file" class="text-xl">File</label>
       <input type="file" class="file-input file-input-bordered file-input-secondary w-full @error('file') is-invalid @enderror" id="file" name="file" required value="{{ old('file') }}">
       @error('file')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <button type="submit" class="btn btn-add">

@@ -11,27 +11,27 @@
       <label for="name" class="text-xl">Name</label>
       <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name" required autofocus value="{{ old('name', $user->name) }}">
       @error('name')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <div class="mb-3">
       <label for="username" class="text-xl">Username</label>
       <input type="text" class="form-input @error('username') is-invalid @enderror" id="username" name="username" required value="{{ old('username', $user->username) }}">
       @error('username')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <div class="mb-3">
       <label for="email" class="text-xl">Email</label>
       <input type="text" class="form-input @error('email') is-invalid @enderror" id="email" name="email" required value="{{ old('email', $user->email) }}">
       @error('email')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <div class="mb-3 {{  $user->is_superadmin ? 'hidden' : '' }}">
@@ -47,18 +47,18 @@
         </label>
       </div>
       @error('password')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <div class="mb-3 flex {{  $user->is_superadmin ? 'hidden' : '' }}">
       <input type="checkbox" class="checkbox checkbox-info @error('is_admin') is-invalid @enderror" id="is_admin" name="is_admin" {{  $user->is_admin ? 'checked' : '' }} {{  $user->is_superadmin ? 'disabled' : '' }} value="">
       <label for="flexCheckDefault" class="text-xl mx-2">Admin</label>
       @error('is_admin')
-      <div class="invalid-feedback">
+      <p class="text-red-500 font-light">
         {{ $message }}
-      </div>
+      </p>
       @enderror
     </div>
     <button type="submit" class="btn btn-add">

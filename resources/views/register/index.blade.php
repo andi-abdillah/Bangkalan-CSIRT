@@ -1,51 +1,54 @@
 @extends('layouts.main')
 
 @section('container')
-
-<div class="d-flex justify-content-center" style="margin-top: 7rem">
-    <div class="col-lg-5">
-        <main class="form-registration">
-            <h1 class="h3 mb-3 fw-normal text-center">Registration Form</h1>
-            <form action="/register" method="post">
-              @csrf
-              <div class="form-floating mb-3">
-                <input type="text" name="name" class="form-control rounded @error('name') is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
-                <label for="name">Name</label>
-                @error('name')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-              </div>
-
-              <div class="form-floating mb-3">
-                <input type="text" name="username" class="form-control rounded @error('username') is-invalid @enderror" id="username" placeholder="Username" required value="{{ old('username') }}">
-                <label for="username">Username</label>
-                @error('username')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-              </div>
-
-              <div class="form-floating mb-3">
-                <input type="email" name="email" class="form-control rounded @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" required value="{{ old('email') }}">
-                <label for="email">Email address</label>
-                @error('email')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-              </div>
-
-              <div class="form-floating mb-3">
-                <input type="password" name="password" class="form-control rounded @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
-                <label for="password">Password</label>
-                @error('password')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-              </div>
-          
-              <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Register</button>
-            </form>
-            <small class="d-block text-center my-4">Already Registered? <a href="/login">Login Now!</a></small>
-        </main>
+<section class="my-24">
+  <div class="w-11/12 md:w-10/12 lg:w-4/6 flex flex-wrap justify-between gap-8 bg-neutral/40 m-auto px-4 py-8 md:p-8 lg:p-10 rounded-[25px]">
+    <div class="hidden lg:inline opacity-80 m-auto flex-1">
+      <img class="w-11/12 mx-auto" src="image-property/register-img.png" alt="register-image">
     </div>
-</div>
-    
-
+    <div class="flex-1">
+      <form action="/dashboard/users" method="post">
+        @csrf
+        <h1 class="text-xl lg:text-2xl font-bold mb-5 text-center">Registration Form</h1>
+        <div class="my-6">
+          <input type="text" name="name" class="form-input @error('name') is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
+          @error('name')
+          <p class="text-red-500 font-light">
+            {{ $message }}
+          </p>
+          @enderror
+        </div>
+        <div class="my-6">
+          <input type="text" name="username" class="form-input @error('username') is-invalid @enderror" id="username" placeholder="Username" required value="{{ old('username') }}">
+          @error('username')
+          <p class="text-red-500 font-light">
+            {{ $message }}
+          </p>
+          @enderror
+        </div>
+        <div class="my-6">
+          <input type="email" name="email" class="form-input @error('email') is-invalid @enderror" id="email" placeholder="Email Address" required value="{{ old('email') }}">
+          @error('email')
+          <p class="text-red-500 font-light">
+            {{ $message }}
+          </p>
+          @enderror
+        </div>
+        <div class="mt-3 mb-2">
+          <input type="password" name="password" class="form-input @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
+          <div id="passwordHelpBlock" class="text-sm mt-2">
+            Minimal 8 Karakter yang berisi kombinasi huruf besar, huruf kecil, angka dan simbol.
+          </div>
+          @error('password')
+          <p class="text-red-500 font-light">
+            {{ $message }}
+          </p>
+          @enderror
+        </div>
+        <button class="btn btn-secondary w-full" type="submit">Create Account</button>
+      </form>
+      <a class="mt-3 float-right underline underline-offset-4 transition ease-in-out duration-300 hover:decoration-secondary" href="/dashboard/users">Go Back To User Management</a>
+    </div>
+  </div>
+</section>
 @endsection
