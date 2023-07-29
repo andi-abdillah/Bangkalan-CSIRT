@@ -47,7 +47,7 @@
         </div>
         <button class="btn btn-secondary w-full" type="submit">Create Account</button>
       </form>
-      <a class="mt-3 float-right underline underline-offset-4 transition ease-in-out duration-300 hover:decoration-secondary" href="/dashboard/users">Go Back To User Management</a>
+      <a class="mt-3 float-right underline underline-offset-4 transition ease-in-out duration-300 hover:decoration-secondary" href="/dashboard/users">Back To User Management</a>
     </div>
   </div>
 </section>

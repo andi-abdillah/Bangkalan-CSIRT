@@ -121,7 +121,7 @@
             </span>
           </div>
           <span class="self-center">
-            File Panduan
+            Guidance File
           </span>
         </a>
       </li>
