@@ -11,7 +11,7 @@
         @csrf
         <h1 class="text-xl lg:text-2xl font-bold mb-5 text-center">Registration Form</h1>
         <div class="my-6">
-          <input type="text" name="name" class="form-input @error('name') is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
+          <input type="text" name="name" class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary @error('name') is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
           @error('name')
           <p class="text-red-500 font-light">
             {{ $message }}
@@ -19,7 +19,7 @@
           @enderror
         </div>
         <div class="my-6">
-          <input type="text" name="username" class="form-input @error('username') is-invalid @enderror" id="username" placeholder="Username" required value="{{ old('username') }}">
+          <input type="text" name="username" class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary @error('username') is-invalid @enderror" id="username" placeholder="Username" required value="{{ old('username') }}">
           @error('username')
           <p class="text-red-500 font-light">
             {{ $message }}
@@ -27,7 +27,7 @@
           @enderror
         </div>
         <div class="my-6">
-          <input type="email" name="email" class="form-input @error('email') is-invalid @enderror" id="email" placeholder="Email Address" required value="{{ old('email') }}">
+          <input type="email" name="email" class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary @error('email') is-invalid @enderror" id="email" placeholder="Email Address" required value="{{ old('email') }}">
           @error('email')
           <p class="text-red-500 font-light">
             {{ $message }}
@@ -35,7 +35,7 @@
           @enderror
         </div>
         <div class="mt-3 mb-2">
-          <input type="password" name="password" class="form-input @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
+          <input type="password" name="password" class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
           <div id="passwordHelpBlock" class="text-sm mt-2">
             Minimal 8 Karakter yang berisi kombinasi huruf besar, huruf kecil, angka dan simbol.
           </div>
