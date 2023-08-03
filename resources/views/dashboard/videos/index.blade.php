@@ -8,39 +8,38 @@
     @endif
 
     <section class="mb-4">
-        <h1 class="text-2xl font-bold my-4">Image Property</h1>
+        <h1 class="text-2xl font-bold my-4">Video Profile</h1>
         <div class="divider"></div>
-        <a href="/dashboard/properties/create" class="btn btn-add mb-3">Create a New Property <span
+        <a href="/dashboard/videos/create" class="btn btn-add mb-3">Create a New Video <span
                 class="material-symbols-rounded">add</span></a>
         <div class="p-4 bg-neutral/70 rounded-[20px] overflow-x-auto">
             <table class="table">
                 <thead class="text-white">
                     <tr>
                         <th class="p-3">No.</th>
-                        <th class="p-3 text-left">Property</th>
                         <th class="p-3 text-left">Name</th>
-                        <th class="p-3 text-left">Image</th>
+                        <th class="p-3 text-left">Video</th>
                         <th class="p-3 text-left">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($properties as $property)
+                    @foreach ($videos as $video)
                         <tr>
                             <td class="p-3">{{ $loop->iteration }} .</td>
-                            <td class="p-3">{{ $property->property }}</td>
-                            <td class="p-3">{{ $property->name }}</td>
+                            <td class="p-3">{{ $video->title }}</td>
                             <td class="p-3">
-                                <img src="{{ asset('storage/' . $property->image) }}" alt="{{ $property->name }}"
-                                    class="w-32 rounded-lg">
+                                <video class="rounded-lg overflow-hidden" width="320" height="240" controls>
+                                    <source src="{{ asset('storage/' . $video->video) }}" class="w-full">
+                                </video>
                             </td>
                             <td class="p-3 flex gap-2">
                                 <a class="icon-edit tooltip" data-tip="Edit"
-                                    href="/dashboard/properties/{{ $property->slug }}/edit">
+                                    href="/dashboard/videos/{{ $video->slug }}/edit">
                                     <span class="material-symbols-rounded">
                                         edit
                                     </span>
                                 </a>
-                                <form class="tooltip" data-tip="Delete" action="/dashboard/properties/{{ $property->slug }}"
+                                <form class="tooltip" data-tip="Delete" action="/dashboard/videos/{{ $video->slug }}"
                                     method="post">
                                     @method('delete')
                                     @csrf

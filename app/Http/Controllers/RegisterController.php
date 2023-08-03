@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\File;
 use Illuminate\Http\Request;
 use App\Models\ImageProperty;
+use App\Models\VideoProfile;
 use App\Models\Key;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -30,6 +31,7 @@ class RegisterController extends Controller
             'keys' => Key::latest()->get(),
             'propertiez'  => ImageProperty::select('image')->where('property', 'Banner')->get(),
             'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
+            'videoProfile' => VideoProfile::latest()->get(),
         ]);
 
     }

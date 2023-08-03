@@ -9,6 +9,7 @@ use App\Models\Footer;
 use App\Models\Profil;
 use App\Models\Category;
 use App\Models\ImageProperty;
+use App\Models\VideoProfile;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Key;
@@ -37,6 +38,7 @@ class PostController extends Controller
             "title" => "All Posts" . $title,
             "active" => 'posts',
             "includeHero" => false,
+            "includeVideo" => true,
             'footers' => Footer::latest()->get(),
             'categories' => Category::all(),
             'profils' => Profil::latest()->get(),
@@ -44,6 +46,7 @@ class PostController extends Controller
             'keys' => Key::latest()->get(),
             'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
             'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
+            'videoProfile' => VideoProfile::latest()->get(),
             "posts" => Post::where('published', true)->latest()->filter(request(['search', 'category', 'author']))->paginate(7)->withQueryString()
         ]);
     }
@@ -81,6 +84,7 @@ class PostController extends Controller
             "title" => "Single Post",
             "active" => 'posts',
             "includeHero" => false,
+            "includeVideo" => true,
             'profils' => Profil::latest()->get(),
             'footers' => Footer::latest()->get(),
             'posts' => Post::where('published', true)->latest()->get(),

@@ -15,12 +15,14 @@ use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\GuidanceController;
 use App\Http\Controllers\ImagePropertyController;
+use App\Http\Controllers\VideoProfileController;
 use App\Http\Controllers\KeyController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserManagementController;
 use App\Models\File;
 use App\Models\Guidance;
 use App\Models\ImageProperty;
+use App\Models\VideoProfile;
 use App\Models\Key;
 use App\Models\Service;
 
@@ -39,6 +41,7 @@ Route::get('/', function () {
 
     return view('home', [
         "includeHero" => true,
+        "includeVideo" => true,
         'footers' => Footer::latest()->get(),
         'profils' => Profil::latest()->get(),
         'categories' => Category::all(),
@@ -46,13 +49,15 @@ Route::get('/', function () {
         'files' => File::latest()->get(),
         'keys' => Key::latest()->get(),
         'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
-        'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+        'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
+        'videoProfile' => VideoProfile::latest()->get(),
     ]);
 })->name('home')->middleware(Spatie\Csp\AddCspHeaders::class);
 
 Route::get('/profil', function () {
     return view('profil', [
         "includeHero" => false,
+        "includeVideo" => true,
         'footers' => Footer::latest()->get(),
         'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
@@ -60,13 +65,15 @@ Route::get('/profil', function () {
         'files' => File::latest()->get(),
         'keys' => Key::latest()->get(),
         'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
-        'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+        'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
+        'videoProfile' => VideoProfile::latest()->get(),
     ]);
 })->middleware(Spatie\Csp\AddCspHeaders::class);
 
 Route::get('/file', function(){
     return view('file', [
         "includeHero" => false,
+        "includeVideo" => true,
         'footers' => Footer::latest()->get(),
         'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
@@ -74,28 +81,15 @@ Route::get('/file', function(){
         'files' => File::latest()->get(),
         'keys' => Key::latest()->get(),
         'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
-        'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+        'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
+        'videoProfile' => VideoProfile::latest()->get(),
     ]);
 })->middleware(Spatie\Csp\AddCspHeaders::class);
 
 Route::get('/service', function(){
     return view('service', [
         "includeHero" => false,
-        'footers' => Footer::latest()->get(),
-        'categories' => Category::all(),
-        'profils' => Profil::latest()->get(),
-        'posts' => Post::where('published', true)->latest()->get(),
-        'files' => File::latest()->get(),
-        'keys' => Key::latest()->get(),
-        'services' => Service::latest()->get(),
-        'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
-        'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
-    ]);
-})->middleware(Spatie\Csp\AddCspHeaders::class);
-
-Route::get('/guidance', function(){
-    return view('guidance', [
-        "includeHero" => false,
+        "includeVideo" => true,
         'footers' => Footer::latest()->get(),
         'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
@@ -105,13 +99,14 @@ Route::get('/guidance', function(){
         'services' => Service::latest()->get(),
         'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
         'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
-        'guidances' => Guidance::paginate(7)
+        'videoProfile' => VideoProfile::latest()->get(),
     ]);
 })->middleware(Spatie\Csp\AddCspHeaders::class);
 
-Route::get('/contact', function(){
-    return view('contact', [
+Route::get('/guidance', function(){
+    return view('guidance', [
         "includeHero" => false,
+        "includeVideo" => true,
         'footers' => Footer::latest()->get(),
         'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
@@ -120,7 +115,26 @@ Route::get('/contact', function(){
         'keys' => Key::latest()->get(),
         'services' => Service::latest()->get(),
         'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
-        'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+        'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
+        'videoProfile' => VideoProfile::latest()->get(),
+        'guidances' => Guidance::paginate(7)
+    ]);
+})->middleware(Spatie\Csp\AddCspHeaders::class);
+
+Route::get('/contact', function(){
+    return view('contact', [
+        "includeHero" => false,
+        "includeVideo" => true,
+        'footers' => Footer::latest()->get(),
+        'categories' => Category::all(),
+        'profils' => Profil::latest()->get(),
+        'posts' => Post::where('published', true)->latest()->get(),
+        'files' => File::latest()->get(),
+        'keys' => Key::latest()->get(),
+        'services' => Service::latest()->get(),
+        'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
+        'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
+        'videoProfile' => VideoProfile::latest()->get(),
     ]);
 })->middleware(Spatie\Csp\AddCspHeaders::class);
 
@@ -156,7 +170,8 @@ Route::resource('/dashboard/categories', AdminCategoryController::class)->except
 Route::resource('/dashboard/footers', FooterController::class)->except('show')->middleware('admin');
 
 Route::resource('/dashboard/properties', ImagePropertyController::class)->except('show')->middleware('admin');
-// 
+
+Route::resource('/dashboard/videos', VideoProfileController::class)->except('show')->middleware('admin');
 
 Route::resource('/dashboard/profils', ProfilController::class)->middleware('admin');
 
