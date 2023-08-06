@@ -10,10 +10,10 @@
 
             @if ($posts->count())
                 <div class="flex flex-wrap justify-evenly gap-2">
-                    @php
-                        $lastPost = $posts->last();
-                    @endphp
                     @foreach ($posts->take(6) as $post)
+                        @if ($post !== $posts->first())
+                            <hr class="w-full h-1 mx-auto bg-gradient-to-r from-base-100 to-base-200 border-0 rounded">
+                        @endif
                         <div class="flex flex-wrap lg:flex-row justify-center mx-3 my-6 md:m-6">
                             <div class="flex items-center justify-center lg:justify-start w-full lg:w-1/2">
                                 <div id="laptop-container"
@@ -42,16 +42,11 @@
                                 </a>
                             </div>
                         </div>
-                        @if ($post != $lastPost)
-                            <hr class="w-full h-1 mx-auto bg-gradient-to-r from-base-100 to-base-200 border-0 rounded">
-                        @endif
                     @endforeach
                 </div>
-
-                @elsex
+            @else
                 <p class="text-center">No Post Found</p>
             @endif
-
         </div>
     </section>
     <!-- End Blog Section -->

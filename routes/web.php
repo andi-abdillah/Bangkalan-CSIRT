@@ -57,7 +57,7 @@ Route::get('/', function () {
 Route::get('/profil', function () {
     return view('profil', [
         "includeHero" => false,
-        "includeVideo" => true,
+        "includeVideo" => false,
         'footers' => Footer::latest()->get(),
         'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
@@ -66,14 +66,13 @@ Route::get('/profil', function () {
         'keys' => Key::latest()->get(),
         'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
         'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
-        'videoProfile' => VideoProfile::latest()->get(),
     ]);
 })->middleware(Spatie\Csp\AddCspHeaders::class);
 
 Route::get('/file', function(){
     return view('file', [
         "includeHero" => false,
-        "includeVideo" => true,
+        "includeVideo" => false,
         'footers' => Footer::latest()->get(),
         'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
@@ -82,14 +81,13 @@ Route::get('/file', function(){
         'keys' => Key::latest()->get(),
         'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
         'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
-        'videoProfile' => VideoProfile::latest()->get(),
     ]);
 })->middleware(Spatie\Csp\AddCspHeaders::class);
 
 Route::get('/service', function(){
     return view('service', [
         "includeHero" => false,
-        "includeVideo" => true,
+        "includeVideo" => false,
         'footers' => Footer::latest()->get(),
         'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
@@ -99,14 +97,13 @@ Route::get('/service', function(){
         'services' => Service::latest()->get(),
         'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
         'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
-        'videoProfile' => VideoProfile::latest()->get(),
     ]);
 })->middleware(Spatie\Csp\AddCspHeaders::class);
 
 Route::get('/guidance', function(){
     return view('guidance', [
         "includeHero" => false,
-        "includeVideo" => true,
+        "includeVideo" => false,
         'footers' => Footer::latest()->get(),
         'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
@@ -116,7 +113,6 @@ Route::get('/guidance', function(){
         'services' => Service::latest()->get(),
         'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
         'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
-        'videoProfile' => VideoProfile::latest()->get(),
         'guidances' => Guidance::paginate(7)
     ]);
 })->middleware(Spatie\Csp\AddCspHeaders::class);
@@ -124,7 +120,7 @@ Route::get('/guidance', function(){
 Route::get('/contact', function(){
     return view('contact', [
         "includeHero" => false,
-        "includeVideo" => true,
+        "includeVideo" => false,
         'footers' => Footer::latest()->get(),
         'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
@@ -134,7 +130,6 @@ Route::get('/contact', function(){
         'services' => Service::latest()->get(),
         'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
         'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
-        'videoProfile' => VideoProfile::latest()->get(),
     ]);
 })->middleware(Spatie\Csp\AddCspHeaders::class);
 

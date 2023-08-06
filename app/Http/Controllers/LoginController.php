@@ -42,6 +42,7 @@ class LoginController extends Controller
     public function authenticate(Request $request){
         $request->validate([
             'email' => 'required|email:dns',
+            // 'email' => 'required',
             'password' => 'required',
             'captcha' => 'required|captcha'
         ]);
@@ -57,7 +58,7 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         } 
 
-        // return back()->with('loginError', 'Login Failed');
+        return back()->with('loginError', 'Login Failed');
     }
 
     public function reloadCaptcha()

@@ -46,7 +46,7 @@
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="/css/dashboard.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
 </head>
 
 <body class="overflow-x-hidden">

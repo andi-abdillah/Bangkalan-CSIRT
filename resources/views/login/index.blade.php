@@ -5,7 +5,7 @@
         <div class="container py-28">
 
             @if (session()->has('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success flex w-10/12 md:w-1/2 mx-auto mb-3">
                     <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
                         viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -16,7 +16,7 @@
             @endif
 
             @if (session()->has('loginError'))
-                <div class="alert alert-error">
+                <div class="alert alert-error flex w-10/12 md:w-1/2 mx-auto mb-3">
                     <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
                         viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -66,7 +66,7 @@
                             class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary"
                             required>
                         @error('captcha')
-                            <div class="alert alert-error">
+                            <div class="alert alert-error flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -10,13 +10,13 @@
                 </span>
                 Back
             </a>
+            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-edit">
+                <span class="material-symbols-rounded">
+                    edit_note
+                </span>
+                Edit
+            </a>
             @can('admin')
-                <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-edit">
-                    <span class="material-symbols-rounded">
-                        edit_note
-                    </span>
-                    Edit
-                </a>
                 <form action="/dashboard/posts/{{ $post->slug }}" method="post">
                     @method('delete')
                     @csrf

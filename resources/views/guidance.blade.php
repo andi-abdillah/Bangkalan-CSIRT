@@ -36,7 +36,7 @@
                         {{ $guidances->total() }}
                         enteries
                     </div>
-                    <div class="pagination pagination-sm">
+                    <div class="pagination">
                         {{ $guidances->links() }}
                     </div>
                 </div>

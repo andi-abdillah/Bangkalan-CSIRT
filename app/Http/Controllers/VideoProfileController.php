@@ -33,10 +33,14 @@ class VideoProfileController extends Controller
      */
     public function create()
     {
-        return view('dashboard.videos.create', [
-            'profils' => Profil::latest()->get(),
-            'properties' => ImageProperty::latest()->get(),
-        ]);
+        if (!VideoProfile::count()) {
+            return view('dashboard.videos.create', [
+                'profils' => Profil::latest()->get(),
+                'properties' => ImageProperty::latest()->get(),
+            ]);
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -47,20 +51,22 @@ class VideoProfileController extends Controller
      */
     public function store(StoreVideoProfileRequest $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|max:255|unique:video_profiles',
-            'video' => 'required|mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:120000',
-        ]);
+        if (!VideoProfile::count()) {
+            $validatedData = $request->validate([
+                'title' => 'required|max:255|unique:video_profiles',
+                'video' => 'required|mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:120000',
+            ]);
 
-        if ($request->file('video')) {
-            $validatedData['video'] = $request->file('video')->store('video-profile');
+            if ($request->file('video')) {
+                $validatedData['video'] = $request->file('video')->store('video-profile');
+            }
+
+            $validatedData['slug'] = Str::slug($validatedData['title'], '-');
+
+            VideoProfile::create($validatedData);
+
+            return redirect('/dashboard/videos')->with('success', 'New Video has been added!');
         }
-
-        $validatedData['slug'] = Str::slug($validatedData['title'], '-');
-
-        VideoProfile::create($validatedData);
-
-        return redirect('/dashboard/videos')->with('success', 'New Video has been added!');
     }
 
     /**
@@ -80,12 +86,14 @@ class VideoProfileController extends Controller
      * @param  \App\Models\VideoProfile  $videoProfile
      * @return \Illuminate\Http\Response
      */
-     public function edit(VideoProfile $video)
+    public function edit(VideoProfile $video)
     {
         return view('dashboard.videos.edit', [
             'profils' => Profil::latest()->get(),
             'video' => $video,
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 

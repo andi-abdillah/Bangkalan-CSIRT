@@ -23,7 +23,7 @@
                     </span>
                 </div>
                 <ul tabindex="0"
-                    class="dropdown-content z-[1] menu p-2 backdrop-blur-md bg-neutral/70 rounded-box w-max mt-6 drop-shadow-lg">
+                    class="dropdown-content z-[1] menu -mr-2 p-2 backdrop-blur-md bg-neutral/70 rounded-box w-max mt-6 drop-shadow-lg">
                     <li>
                         <a class="flex gap-2" href="/register/showChangePasswordGet">
                             Change Password

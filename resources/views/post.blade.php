@@ -15,9 +15,10 @@
                 <article class="my-4">
                     {!! $post->body !!}
                 </article>
-                <a href="/posts"
-                    class="text-xl transition ease-in-out duration-300 underline underline-offset-4 hover:decoration-primary">Back
-                    to Posts</a>
+                <a href="{{ url()->previous() }}"
+                    class="text-xl transition ease-in-out duration-300 underline underline-offset-4 hover:decoration-primary">
+                    Back
+                </a>
             </div>
         </div>
     </div>

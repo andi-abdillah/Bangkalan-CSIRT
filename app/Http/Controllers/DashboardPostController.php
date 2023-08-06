@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ImageProperty;
 use Illuminate\Support\Facades\Storage;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardPostController extends Controller
 {
@@ -20,17 +20,21 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->is_admin){
+        if (auth()->user()->is_admin) {
             return view('dashboard.posts.index', [
                 'profils' => Profil::latest()->get(),
                 'posts' => Post::latest()->get(),
-                'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+                'properties' => ImageProperty::where('property', 'Logo')
+                    ->latest()
+                    ->get(),
             ]);
         }
         return view('dashboard.posts.index', [
             'profils' => Profil::latest()->get(),
             'posts' => Post::where('user_id', auth()->user()->id)->get(),
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -44,7 +48,9 @@ class DashboardPostController extends Controller
         return view('dashboard.posts.create', [
             'profils' => Profil::latest()->get(),
             'categories' => Category::all(),
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -60,17 +66,17 @@ class DashboardPostController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
-            'image'=> 'image|file|max:2048',
-            'body' => 'required'
+            'image' => 'image|file|max:2048',
+            'body' => 'required',
         ]);
 
-        if($request->has('published')){
+        if ($request->has('published')) {
             $validatedData['published'] = true;
         } else {
             $validatedData['published'] = false;
         }
 
-        if($request->file('image')) {
+        if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('post-image');
         }
 
@@ -93,7 +99,9 @@ class DashboardPostController extends Controller
         return view('dashboard.posts.show', [
             'profils' => Profil::latest()->get(),
             'post' => $post,
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -105,12 +113,14 @@ class DashboardPostController extends Controller
      */
     public function edit(Post $post)
     {
-        if(auth()->user()->is_admin){
+        if (auth()->user()->is_admin || auth()->user()) {
             return view('dashboard.posts.edit', [
                 'profils' => Profil::latest()->get(),
                 'post' => $post,
                 'categories' => Category::all(),
-                'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+                'properties' => ImageProperty::where('property', 'Logo')
+                    ->latest()
+                    ->get(),
             ]);
         } else {
             return redirect()->back();
@@ -130,29 +140,28 @@ class DashboardPostController extends Controller
             'title' => 'required|max:255',
             'category_id' => 'required',
             'image' => 'image|file|max:2048',
-            'body' => 'required'
+            'body' => 'required',
         ];
 
-        if($request->slug != $post->slug) {
+        if ($request->slug != $post->slug) {
             $rules['slug'] = 'required|unique:posts';
         }
 
         $validatedData = $request->validate($rules);
 
-        if($request->has('published')){
+        if ($request->has('published')) {
             $validatedData['published'] = true;
         } else {
             $validatedData['published'] = false;
         }
 
-        if($request->file('image')) {
-            if($post->image){
+        if ($request->file('image')) {
+            if ($post->image) {
                 Storage::delete($post->image);
             }
             $validatedData['image'] = $request->file('image')->store('post-image');
         }
 
-        $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
 
         Post::where('id', $post->id)->update($validatedData);
@@ -168,8 +177,8 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if(auth()->user()->is_admin){
-            if($post->image) {
+        if (auth()->user()->is_admin) {
+            if ($post->image) {
                 Storage::delete($post->image);
             }
             Post::destroy($post->id);
@@ -180,8 +189,9 @@ class DashboardPostController extends Controller
         }
     }
 
-    public function checkSlug(Request $request) {
+    public function checkSlug(Request $request)
+    {
         $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
-        return response()->json(['slug' => $slug]);       
+        return response()->json(['slug' => $slug]);
     }
 }

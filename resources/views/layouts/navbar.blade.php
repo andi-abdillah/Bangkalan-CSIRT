@@ -12,7 +12,8 @@
                     </svg>
                 </label>
                 <ul tabindex="0" class="dropdown-content list-none mt-5 z-[1] p-2 shadow bg-neutral rounded-box w-52">
-                    <li class="m-2 p-2"><a class="link-underline {!! Request::is('/') ? 'link-active' : '' !!}" href="/">Home</a></li>
+                    <li class="m-2 p-2"><a class="link-underline {!! Request::is('/') ? 'link-active' : '' !!}" href="/">Home</a>
+                    </li>
                     <li class="m-2 p-2"><a class="link-underline {!! Request::is('profil') ? 'link-active' : '' !!}" href="/profil">Profile</a>
                     </li>
                     <li class="m-2 p-2"><a class="link-underline {!! Request::is('posts') ? 'link-active' : '' !!}" href="/posts">Article</a>

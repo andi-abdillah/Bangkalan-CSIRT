@@ -3,7 +3,7 @@
 @section('container')
     <!-- Posts Section -->
     <div class="container mx-auto pt-28 text-center">
-        <h1 class="my-3 text-2xl lg:text-4xl font-bold">{{ $title }}</h1>
+        <h1 class="my-3 text-2xl lg:text-4xl font-bold capitalize">{{ $title }}</h1>
         <div class="flex justify-center my-8">
             <form action="/posts" class="w-80 lg:w-96 font-bold">
                 @if (request('category'))
@@ -21,16 +21,44 @@
                         </svg>
                     </div>
                     <input type="search" id="default-search"
-                        class="block w-full p-4 pl-10 text-lg bg-neutral transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-primary rounded-[12px]"
+                        class="block w-full p-4 pl-10 pr-24 text-lg bg-neutral transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-primary rounded-[12px]"
                         name="search" value="{{ request('search') }}" placeholder="Search...">
                     <button type="submit"
-                        class="absolute right-0 top-0 btn btn-primary h-full rounded-l-none rounded-r-[12px]">Search</button>
+                        class="absolute right-0 top-0 btn btn-primary h-full rounded-l-none rounded-r-[12px]">Search
+                    </button>
                 </div>
             </form>
         </div>
 
+        <div class="dropdown mt-6">
+            <button tabindex="0" class="btn btn-neutral m-1 w-64 capitalize">
+                <span id="myElement">
+                    @if (empty(request()->query('category')))
+                        Select Category
+                    @else
+                        {{ str_replace('-', ' ', request()->query('category')) }}
+                    @endif
+                </span>
+                <span class="material-symbols-rounded">
+                    arrow_drop_down
+                </span>
+            </button>
+            <ul tabindex="0"
+                class="dropdown-content z-10 ml-1 mt-1 menu p-2 shadow-xl bg-neutral rounded-box w-64 capitalize">
+                @if (!empty(request()->query('category')))
+                    <li><a href="/posts">All Posts</a></li>
+                @endif
+                @foreach ($categories as $category)
+                    @if (empty(request()->query('category')) || request()->query('category') !== $category->slug)
+                        <li><a href="/posts?category={{ $category->slug }}">{{ $category->name }}</a></li>
+                    @endif
+                @endforeach
+            </ul>
+        </div>
+
+
         @if ($posts->count())
-            <div class="flex flex-wrap lg:flex-row justify-center mx-3 md:mx-4 mt-16">
+            <div class="flex flex-wrap lg:flex-row justify-center mx-3 md:mx-4 my-12">
                 <div class="flex items-center justify-center lg:justify-start w-full lg:w-1/2">
                     <div id="laptop-container"
                         class="w-[22rem] h-[14rem] md:w-[30rem] md:h-[19rem] lg:w-[34rem] lg:h-[21rem]">
@@ -58,7 +86,11 @@
                     </a>
                 </div>
             </div>
-            <hr class="w-full h-1 mx-auto my-24 bg-gradient-to-r from-base-100 to-base-200 border-0 rounded">
+        @else
+            <p class="text-center my-24">No Post Found</p>
+        @endif
+        @if ($posts->skip(1)->count())
+            <hr class="w-full h-1 mx-auto mb-24 bg-gradient-to-r from-base-100 to-base-200 border-0 rounded">
             <div class="flex flex-wrap justify-evenly gap-2 my-12">
                 @foreach ($posts->skip(1) as $post)
                     <div class="group card mt-5 mb-16 w-72 lg:w-80 bg-neutral/50 shadow-xl">
@@ -67,8 +99,8 @@
                             <img class="child-img w-[16.5rem] h-[11rem] lg:w-[19rem] lg:h-[13rem] mt-4 rounded md:rounded-xl"
                                 src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" />
                         </div>
-                        <div class="card-body -mt-36 px-4 items-center text-center">
-                            <a href="/posts/{{ $post->slug }}" class="btn btn-outline btn-secondary -translate-y-4">Read
+                        <div class="card-body -mt-[9.7rem] px-4 items-center text-center">
+                            <a href="/posts/{{ $post->slug }}" class="btn btn-outline btn-secondary mb-2">Read
                                 More
                                 <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 14 10">
@@ -77,12 +109,14 @@
                                 </svg>
                             </a>
                             <a class="underline text-base md:text-xl font-bold transition ease-in-out duration-300 hover:decoration-primary"
-                                href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a>
+                                href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}
+                            </a>
                             <h2 class="text-base md:text-lg font-bold">{{ $post->title }}</h2>
                             <p>
                                 By <a class="underline decoration-primary"
-                                    href="/posts?author={{ $post->author->username }}">{{ $post->author->name }}</a> at
-                                <span>{{ date('F d, Y', strtotime($post->created_at)) }}</span>
+                                    href="/posts?author={{ $post->author->username }}">{{ $post->author->name }}
+                                </a>
+                                at <span>{{ date('F d, Y', strtotime($post->created_at)) }}</span>
                             </p>
                             <div class="divider my-0"></div>
                             <p class="w-11/12 md:w-4/5 lg:w-full">{{ $post->excerpt }}</p>
@@ -90,13 +124,28 @@
                     </div>
                 @endforeach
             </div>
-        @else
-            <p class="text-center my-24">No Post Found</p>
         @endif
 
-        <div class="flex justify-end">
+        <div class="pagination">
             {{ $posts->links() }}
         </div>
     </div>
     <!-- End Posts Section -->
+    <script nonce="{{ csp_nonce() }}" type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            let element = document.getElementById('myElement');
+            let maxLength = 25;
+            let text = element.innerHTML.trim();
+            let truncatedText = text.length > maxLength ? text.substr(0, maxLength) + '...' : text;
+            element.innerHTML = truncatedText;
+
+            const elements = document.querySelectorAll('.dropdown-content li a');
+            elements.forEach(function(element) {
+                let text = element.textContent.trim();
+                let truncatedText = text.length > maxLength ? text.substr(0, maxLength) + '...' : text;
+                element.textContent = truncatedText;
+            });
+        })
+    </script>
+
 @endsection

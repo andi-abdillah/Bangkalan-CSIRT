@@ -2,7 +2,7 @@
 
 @section('container')
     @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success flex" role="alert">
             {{ session('success') }}
         </div>
     @endif
@@ -10,8 +10,11 @@
     <section class="mb-4">
         <h1 class="text-2xl font-bold my-4">Video Profile</h1>
         <div class="divider"></div>
-        <a href="/dashboard/videos/create" class="btn btn-add mb-3">Create a New Video <span
-                class="material-symbols-rounded">add</span></a>
+        @if (!$videos->count())
+            <a href="/dashboard/videos/create" class="btn btn-add mb-3">Create a New Video
+                <span class="material-symbols-rounded">add</span>
+            </a>
+        @endif
         <div class="p-4 bg-neutral/70 rounded-[20px] overflow-x-auto">
             <table class="table">
                 <thead class="text-white">

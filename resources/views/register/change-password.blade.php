@@ -12,7 +12,7 @@
                 </div>
             @endif
             @if (session('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success flex">
                     {{ session('success') }}
                 </div>
             @endif

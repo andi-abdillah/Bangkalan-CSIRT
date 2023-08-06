@@ -3,7 +3,7 @@
     <div class="drawer-side">
         <label for="my-drawer-2" class="drawer-overlay"></label>
         <ul
-            class="flex flex-col gap-1.5 w-72 h-max p-5 my-auto lg:m-5 bg-gradient-to-r from-neutral to-neutral/60 backdrop-blur-md drop-shadow-lg rounded-[20px]">
+            class="flex flex-col gap-1.5 text-[.86rem] w-72 h-max p-5 lg:m-5 bg-gradient-to-r from-neutral to-neutral/60 backdrop-blur-md drop-shadow-lg rounded-[20px]">
             <li
                 class="{{ Request::is('dashboard') ? 'bg-admin-active' : 'hover:bg-neutral-focus' }} rounded-[12px] overflow-hidden">
                 <a href="/dashboard" class="flex gap-4 w-full h-full px-4 py-2">

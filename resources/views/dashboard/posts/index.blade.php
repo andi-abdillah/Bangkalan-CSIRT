@@ -2,7 +2,7 @@
 
 @section('container')
     @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success flex" role="alert">
             {{ session('success') }}
         </div>
     @endif
@@ -42,13 +42,13 @@
                                         visibility
                                     </span>
                                 </a>
+                                <a class="icon-edit tooltip" data-tip="Edit"
+                                    href="/dashboard/posts/{{ $post->slug }}/edit">
+                                    <span class="material-symbols-rounded">
+                                        edit
+                                    </span>
+                                </a>
                                 @can('admin')
-                                    <a class="icon-edit tooltip" data-tip="Edit"
-                                        href="/dashboard/posts/{{ $post->slug }}/edit">
-                                        <span class="material-symbols-rounded">
-                                            edit
-                                        </span>
-                                    </a>
                                     <form class="tooltip" data-tip="Delete" action="/dashboard/posts/{{ $post->slug }}"
                                         method="post">
                                         @method('delete')

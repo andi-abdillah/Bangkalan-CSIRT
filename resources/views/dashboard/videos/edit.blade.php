@@ -19,18 +19,16 @@
             </div>
             <div class="mb-3">
                 <label for="video" class="text-xl">Video</label>
-                @if ($video->video)
-                    <video class="my-3 rounded-lg overflow-hidden" width="320" height="240" controls>
+                <video class="my-3 rounded-lg overflow-hidden" width="320" height="240" controls>
+                    @if ($video->video)
                         <source src="{{ asset('storage/' . $video->video) }}" class="video-preview w-full">
-                    </video>
-                @else
-                    <video class="my-3 rounded-lg overflow-hidden" width="320" height="240" controls>
+                    @else
                         <source class="video-preview w-full">
-                    </video>
-                @endif
+                    @endif
+                </video>
                 <input
                     class="file-input file-input-bordered file-input-secondary w-full @error('video') is-invalid @enderror"
-                    type="file" id="video" name="video" onchange="previewVideo()">
+                    type="file" id="video" name="video" accept="video/*" onchange="previewVideo()">
                 @error('video')
                     <p class="text-red-500 font-light">
                         {{ $message }}

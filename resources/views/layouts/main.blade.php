@@ -25,52 +25,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
 
-    <style>
-        * {
-            font-family: 'Fira Sans', sans-serif;
-        }
+    <!-- Custom styles for this template -->
+    <link href="/css/style.css" rel="stylesheet">
 
+    <style>
         .hero {
             @foreach ($propertiez->take(1) as $property)
                 background-image: url('{{ asset('storage/' . $property->image) }}');
             @endforeach
-        }
-
-        .pdfobject-container {
-            height: 100vh;
-            border: 1rem solid rgba(0, 0, 0, .1);
-        }
-
-        .link-underline {
-            border-bottom-width: 0;
-            background-image: linear-gradient(transparent, transparent), linear-gradient(hsl(var(--s)), hsl(var(--s)));
-            background-size: 0 2.5px;
-            background-position: 0 100%;
-            background-repeat: no-repeat;
-            transition: background-size .3s ease-in-out;
-            text-decoration: none;
-        }
-
-        .link-underline:hover {
-            background-size: 100% 2.5px;
-        }
-
-        .link-active {
-            background-size: 100% 2.5px;
-        }
-
-        #laptop-container {
-            background-image: url("image-property/laptop-container.png");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            transform-style: preserve-3d;
-        }
-
-        .child-img {
-            transform: translateZ(-10px)
         }
     </style>
     @foreach ($profils->take(1) as $profil)

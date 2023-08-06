@@ -2,19 +2,40 @@
 
 @section('container')
     <section class="my-24">
+        @if (session()->has('success'))
+            <div class="alert alert-success flex w-10/12 md:w-1/2 mx-auto mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{{ session('success') }}</span>
+            </div>
+        @endif
+
+        @if (session()->has('registerError'))
+            <div class="alert alert-error flex w-10/12 md:w-1/2 mx-auto mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{{ session('registerError') }}</span>
+            </div>
+        @endif
         <div
             class="w-11/12 md:w-10/12 lg:w-4/6 flex flex-wrap justify-between gap-8 bg-neutral/40 m-auto px-4 py-8 md:p-8 lg:p-10 rounded-[25px]">
             <div class="hidden lg:inline opacity-80 m-auto flex-1">
                 <img class="w-11/12 mx-auto" src="image-property/register-img.png" alt="register-image">
             </div>
             <div class="flex-1">
-                <form action="/dashboard/users" method="post">
+                <form action="/register" method="post">
                     @csrf
                     <h1 class="text-xl lg:text-2xl font-bold mb-5 text-center">Registration Form</h1>
                     <div class="my-6">
                         <input type="text" name="name"
                             class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary @error('name') is-invalid @enderror"
-                            id="name" placeholder="Name" required value="{{ old('name') }}">
+                            id="name" placeholder="Name" required>
                         @error('name')
                             <p class="text-red-500 font-light">
                                 {{ $message }}
@@ -24,7 +45,7 @@
                     <div class="my-6">
                         <input type="text" name="username"
                             class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary @error('username') is-invalid @enderror"
-                            id="username" placeholder="Username" required value="{{ old('username') }}">
+                            id="username" placeholder="Username" required>
                         @error('username')
                             <p class="text-red-500 font-light">
                                 {{ $message }}
@@ -34,7 +55,7 @@
                     <div class="my-6">
                         <input type="email" name="email"
                             class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary @error('email') is-invalid @enderror"
-                            id="email" placeholder="Email Address" required value="{{ old('email') }}">
+                            id="email" placeholder="Email Address" required>
                         @error('email')
                             <p class="text-red-500 font-light">
                                 {{ $message }}
