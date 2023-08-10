@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <section class="mb-4">
+    <section class="mb-8">
         <h1 class="text-2xl font-bold my-4">Edit a Service</h1>
         <div class="divider"></div>
         <form method="post" action="/dashboard/services/{{ $service->slug }}" class="mb-5">
@@ -9,8 +9,8 @@
             @csrf
             <div class="mb-3">
                 <label for="name" class="text-xl">Name</label>
-                <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name"
-                    required autofocus value="{{ old('name', $service->name) }}">
+                <input type="text" class="form-input" id="name" name="name" required autofocus
+                    value="{{ old('name', $service->name) }}">
                 @error('name')
                     <p class="text-red-500 font-light">
                         {{ $message }}

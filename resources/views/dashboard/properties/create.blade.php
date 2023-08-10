@@ -1,15 +1,14 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <section class="mb-4">
+    <section class="mb-8">
         <h1 class="text-2xl font-bold my-4">Create a Property</h1>
         <div class="divider"></div>
         <form method="post" action="/dashboard/properties" class="mb-5" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name" class="text-xl">Name</label>
-                <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name"
-                    required value="{{ old('name') }}">
+                <input type="text" class="form-input" id="name" name="name" required value="{{ old('name') }}">
                 @error('name')
                     <p class="text-red-500 font-light">
                         {{ $message }}
@@ -26,9 +25,8 @@
             <div class="mb-3">
                 <label for="image" class="text-xl">Image Property</label>
                 <img class="img-preview my-3 w-64 rounded-lg">
-                <input
-                    class="file-input file-input-bordered file-input-secondary w-full @error('image') is-invalid @enderror"
-                    type="file" id="image" name="image" onchange="previewImage()">
+                <input class="file-input file-input-bordered file-input-secondary w-full" type="file" id="image"
+                    name="image" onchange="previewImage()">
                 @error('image')
                     <p class="text-red-500 font-light">
                         {{ $message }}

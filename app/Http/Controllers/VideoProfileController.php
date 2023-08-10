@@ -38,9 +38,8 @@ class VideoProfileController extends Controller
                 'profils' => Profil::latest()->get(),
                 'properties' => ImageProperty::latest()->get(),
             ]);
-        } else {
-            return redirect()->back();
         }
+        return redirect()->back();
     }
 
     /**
@@ -62,6 +61,12 @@ class VideoProfileController extends Controller
             }
 
             $validatedData['slug'] = Str::slug($validatedData['title'], '-');
+
+            if ($request->has('show')) {
+                $validatedData['show'] = true;
+            } else {
+                $validatedData['show'] = false;
+            }
 
             VideoProfile::create($validatedData);
 
@@ -115,6 +120,12 @@ class VideoProfileController extends Controller
         }
 
         $validatedData = $request->validate($rules);
+
+        if ($request->has('show')) {
+            $validatedData['show'] = true;
+        } else {
+            $validatedData['show'] = false;
+        }
 
         if ($request->file('video')) {
             if ($video->video) {

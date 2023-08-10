@@ -10,14 +10,16 @@
             </label>
         </div>
         @foreach ($profils->take(1) as $profil)
-            <a class="normal-case text-xl lg:mx-3" href="/"><strong>{{ $profil->name }}</strong></a>
+            <a class="text-xl lg:mx-3" href="/"><strong>{{ $profil->name }}</strong></a>
         @endforeach
     </div>
     <div class="navbar-end w-auto">
         @auth
             <div class="dropdown dropdown-end w-max">
                 <div tabindex="0" class="text-xl mx-4 flex content-center cursor-pointer">
-                    {{ auth()->user()->name }}
+                    <span id="username">
+                        {{ auth()->user()->name }}
+                    </span>
                     <span class="material-symbols-rounded">
                         arrow_drop_down
                     </span>
@@ -47,3 +49,13 @@
         @endauth
     </div>
 </div>
+
+<script nonce="{{ csp_nonce() }}" type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        let username = document.querySelector('#username')
+        let maxLength = 6;
+        let text = username.innerHTML.trim();
+        let truncatedText = text.length > maxLength ? text.substr(0, maxLength) + '..' : text;
+        username.innerHTML = truncatedText;
+    })
+</script>

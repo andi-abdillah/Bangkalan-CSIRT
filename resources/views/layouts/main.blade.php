@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="night">
 
 <head>
     <!-- Required meta tags -->
@@ -75,32 +75,11 @@
                 }
             });
         })
-
-        window.addEventListener("DOMContentLoaded", function() {
-            let themeValue = localStorage.getItem("myCsirtTheme") || "dark";
-            document.documentElement.setAttribute("data-theme", themeValue);
-
-            const buttons = document.querySelectorAll("#theme button");
-
-            buttons.forEach(function(button) {
-                if (button.value === themeValue) {
-                    button.classList.add("bg-secondary");
-                }
-
-                button.addEventListener("click", function() {
-                    const value = this.value;
-                    document.documentElement.setAttribute("data-theme", value);
-
-                    buttons.forEach(function(btn) {
-                        btn.classList.remove("bg-secondary");
-                    });
-
-                    this.classList.add("bg-secondary");
-
-                    themeValue = value;
-                    localStorage.setItem("myCsirtTheme", themeValue);
-                });
-            });
+        
+        const alert = document.getElementById('alert')
+        const closeBtn = document.getElementById('closeBtn')
+        closeBtn.addEventListener('click', function() {
+            alert.style.display = 'none';
         });
     </script>
 </body>

@@ -2,17 +2,20 @@
 
 @section('container')
     @if (session()->has('success'))
-        <div class="alert alert-success flex col-lg-10" role="alert">
-            {{ session('success') }}
+        <div id="alert" class="alert alert-success flex justify-between" role="alert">
+            <span>
+                {{ session('success') }}
+            </span>
+            <button id="closeBtn" class="btn btn-neutral btn-circle btn-sm">X</button>
         </div>
     @endif
 
-    <section class="mb-4">
+    <section class="mb-8">
         <h1 class="text-2xl font-bold my-4">File Panduan</h1>
         <div class="divider"></div>
-        <a href="/dashboard/guidances/create" class="btn btn-add mb-3">Upload a New File <span
-                class="material-symbols-rounded">add</span></a>
-
+        <a href="/dashboard/guidances/create" class="btn btn-add mb-3">Upload a New File
+            <span class="material-symbols-rounded">add</span>
+        </a>
         <div class="p-4 bg-neutral/70 rounded-[20px] overflow-x-auto">
             <table class="table">
                 <thead class="text-white">

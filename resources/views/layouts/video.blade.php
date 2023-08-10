@@ -12,50 +12,50 @@
             @endforeach
         </div>
     </div>
-@endif
 
-<script nonce="{{ csp_nonce() }}" type="text/javascript">
-    function setCookie(name, value) {
-        var expires = "";
-        var date = new Date();
-        date.setTime(date.getTime() + (6 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-        var encryptedValue = btoa(value);
-        document.cookie = name + "=" + encryptedValue + expires + "; path=/";
-    }
-
-    function getCookie(name) {
-        var cookieArr = document.cookie.split("; ");
-        for (var i = 0; i < cookieArr.length; i++) {
-            var cookiePair = cookieArr[i].split("=");
-            if (name === cookiePair[0]) {
-                // Dekripsi nilai cookie sebelum dikembalikan
-                var decryptedValue = atob(cookiePair[1]);
-                return decodeURIComponent(decryptedValue);
-            }
+    <script nonce="{{ csp_nonce() }}" type="text/javascript">
+        function setCookie(name, value) {
+            var expires = "";
+            var date = new Date();
+            date.setTime(date.getTime() + (6 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+            var encryptedValue = btoa(value);
+            document.cookie = name + "=" + encryptedValue + expires + "; path=/";
         }
-        return null;
-    }
 
-    const videoContainer = document.getElementById('videoContainer');
-    const closeButton = document.getElementById('closeButton');
-    const videoPlayer = document.getElementById('videoPlayer');
+        function getCookie(name) {
+            var cookieArr = document.cookie.split("; ");
+            for (var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i].split("=");
+                if (name === cookiePair[0]) {
+                    // Dekripsi nilai cookie sebelum dikembalikan
+                    var decryptedValue = atob(cookiePair[1]);
+                    return decodeURIComponent(decryptedValue);
+                }
+            }
+            return null;
+        }
 
-    const isVideoHidden = getCookie('videoProfileHidden');
-    if (isVideoHidden === 'true') {
-        videoContainer.style.display = 'none';
-    }
+        const videoContainer = document.getElementById('videoContainer');
+        const closeButton = document.getElementById('closeButton');
+        const videoPlayer = document.getElementById('videoPlayer');
 
-    closeButton.addEventListener('click', function() {
-        videoContainer.style.display = 'none';
-        setCookie('videoProfileHidden', 'true');
-    });
+        const isVideoHidden = getCookie('videoProfileHidden');
+        if (isVideoHidden === 'true') {
+            videoContainer.style.display = 'none';
+        }
 
-    videoPlayer.addEventListener('ended', function() {
-        setTimeout(function() {
+        closeButton.addEventListener('click', function() {
             videoContainer.style.display = 'none';
             setCookie('videoProfileHidden', 'true');
-        }, 4000);
-    });
-</script>
+        });
+
+        videoPlayer.addEventListener('ended', function() {
+            setTimeout(function() {
+                videoContainer.style.display = 'none';
+                setCookie('videoProfileHidden', 'true');
+            }, 4000);
+        });
+    </script>
+@endif
 <!-- End Video Section -->

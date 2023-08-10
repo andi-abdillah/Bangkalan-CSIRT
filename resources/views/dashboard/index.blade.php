@@ -7,7 +7,7 @@
             <div class="hero-overlay bg-opacity-60"></div>
             <div class="text-center text-neutral-content">
                 <div class="max-w-md">
-                    <h1 class="mb-5 text-2xl md:text-4xl lg:text-5xl font-bold">Welcome back, {{ auth()->user()->name }}</h1>
+                    <h1 class="mb-5 text-2xl md:text-4xl font-bold">Welcome back, {{ auth()->user()->name }}</h1>
                     <a href="/dashboard/posts" class="btn btn-add rounded-[13px]">Create Something
                         <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 10">

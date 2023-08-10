@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <section class="mb-4">
+    <section class="mb-8">
         <h1 class="text-2xl font-bold my-4">Edit a Post</h1>
         <div class="divider"></div>
         <form method="post" action="/dashboard/posts/{{ $post->slug }}" class="mb-5" enctype="multipart/form-data">
@@ -9,8 +9,8 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="text-xl">Title</label>
-                <input type="text" class="form-input @error('title') is-invalid @enderror" id="title" name="title"
-                    required autofocus value="{{ old('title', $post->title) }}">
+                <input type="text" class="form-input" id="title" name="title" required autofocus
+                    value="{{ old('title', $post->title) }}">
                 @error('title')
                     <p class="text-red-500 font-light">
                         {{ $message }}
@@ -19,8 +19,8 @@
             </div>
             <div class="mb-3">
                 <label for="slug" class="text-xl">Slug</label>
-                <input type="text" class="form-input @error('slug') is-invalid @enderror" id="slug" name="slug"
-                    required value="{{ old('slug', $post->slug) }}">
+                <input type="text" class="form-input" id="slug" name="slug" required
+                    value="{{ old('slug', $post->slug) }}">
                 @error('slug')
                     <p class="text-red-500 font-light">
                         {{ $message }}
@@ -46,9 +46,8 @@
                 @else
                     <img class="img-preview my-3 w-64 rounded-lg">
                 @endif
-                <input
-                    class="file-input file-input-bordered file-input-secondary w-full @error('image') is-invalid @enderror"
-                    type="file" id="image" name="image" onchange="previewImage()">
+                <input class="file-input file-input-bordered file-input-secondary w-full" type="file" id="image"
+                    name="image" onchange="previewImage()">
                 @error('image')
                     <p class="text-red-500 font-light">
                         {{ $message }}
@@ -64,9 +63,9 @@
                 <trix-editor class="trix-content" input="body"></trix-editor>
             </div>
             <div class="mb-3 flex">
-                <input type="checkbox" class="checkbox checkbox-info @error('published') is-invalid @enderror"
-                    id="published" name="published" {{ $post->published ? 'checked' : '' }} value="">
-                <label for="flexCheckDefault" class="text-xl mx-2">Publish</label>
+                <input type="checkbox" class="checkbox checkbox-info" id="published" name="published"
+                    {{ $post->published ? 'checked' : '' }} value="">
+                <label for="published" class="text-xl mx-2">Publish</label>
                 @error('published')
                     <p class="text-red-500 font-light">
                         {{ $message }}

@@ -23,7 +23,10 @@ class DashboardPostController extends Controller
         if (auth()->user()->is_admin) {
             return view('dashboard.posts.index', [
                 'profils' => Profil::latest()->get(),
-                'posts' => Post::latest()->get(),
+                'posts' => Post::latest()
+                    ->filter(request(['searchPostsBy']))
+                    ->paginate(7)
+                    ->withQueryString(),
                 'properties' => ImageProperty::where('property', 'Logo')
                     ->latest()
                     ->get(),
@@ -31,7 +34,10 @@ class DashboardPostController extends Controller
         }
         return view('dashboard.posts.index', [
             'profils' => Profil::latest()->get(),
-            'posts' => Post::where('user_id', auth()->user()->id)->get(),
+            'posts' => Post::where('user_id', auth()->user()->id)
+                ->filter(request(['searchPostsBy']))
+                ->paginate(7)
+                ->withQueryString(),
             'properties' => ImageProperty::where('property', 'Logo')
                 ->latest()
                 ->get(),

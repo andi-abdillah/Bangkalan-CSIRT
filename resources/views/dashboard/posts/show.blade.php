@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <section class="flex flex-col justify-center">
+    <section class="flex flex-col justify-center mb-8">
         <h1 class="text-2xl text-center lg:text-3xl max-w-3xl mx-auto my-3">{{ $post->title }}</h1>
         <div class="flex justify-center gap-2">
             <a href="/dashboard/posts" class="btn btn-back">
@@ -32,7 +32,7 @@
         <div class="max-w-xl my-3 rounded-[20px] overflow-hidden mx-auto">
             <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" class="w-full">
         </div>
-        <article class="max-w-3xl mx-auto my-3">
+        <article class="max-w-[20rem] md:max-w-2xl lg:max-w-3xl mx-auto my-3 overflow-hidden">
             {!! $post->body !!}
         </article>
     </section>

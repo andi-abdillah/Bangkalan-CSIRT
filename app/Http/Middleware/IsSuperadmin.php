@@ -16,11 +16,15 @@ class IsSuperadmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->check() && auth()->user()->is_superadmin) {
-            return $next($request);
-        }
+        // if (auth()->check() && auth()->user()->is_superadmin) {
+        //     return $next($request);
+        // }
 
-        return back();
-        
+        // return back();
+
+        if (auth()->guest() || !auth()->user()->is_superadmin) {
+            return back();
+        }
+        return $next($request);
     }
 }

@@ -19,7 +19,7 @@ class AdminCategoryController extends Controller
     {
         return view('dashboard.categories.index', [
             'profils' => Profil::latest()->get(),
-            'categories' => Category::all(),
+            'categories' => Category::paginate(3)->withQueryString(),
             'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
         ]);
     }

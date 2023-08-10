@@ -2,12 +2,15 @@
 
 @section('container')
     @if (session()->has('success'))
-        <div class="alert alert-success flex" role="alert">
-            {{ session('success') }}
+        <div id="alert" class="alert alert-success flex justify-between" role="alert">
+            <span>
+                {{ session('success') }}
+            </span>
+            <button id="closeBtn" class="btn btn-neutral btn-circle btn-sm">X</button>
         </div>
     @endif
 
-    <section class="mb-4">
+    <section class="mb-8">
         <h1 class="text-2xl font-bold my-4">User Management</h1>
         <div class="divider"></div>
         <a href="/register" class="btn btn-add mb-3">Create A New Account <span

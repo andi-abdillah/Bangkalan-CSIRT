@@ -2,12 +2,15 @@
 
 @section('container')
     @if (session()->has('success'))
-        <div class="alert alert-success flex flex" role="alert">
-            {{ session('success') }}
+        <div id="alert" class="alert alert-success flex justify-between" role="alert">
+            <span>
+                {{ session('success') }}
+            </span>
+            <button id="closeBtn" class="btn btn-neutral btn-circle btn-sm">X</button>
         </div>
     @endif
 
-    <section class="mb-4">
+    <section class="mb-8">
         <h1 class="text-2xl font-bold my-4">Post Category</h1>
         <div class="divider"></div>
         <a href="/dashboard/categories/create" class="btn btn-add mb-3">Create a New Category <span
@@ -22,9 +25,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php $i = ($categories->currentpage()-1)* $categories->perpage() + 1;@endphp
                     @foreach ($categories as $category)
                         <tr>
-                            <td class="p-3">{{ $loop->iteration }} .</td>
+                            <td class="p-3">{{ $i }} .</td>
                             <td class="p-3 w-full">{{ $category->name }}</td>
                             <td class="p-3 flex gap-2">
                                 <a class="icon-edit tooltip" data-tip="Edit"
@@ -45,9 +49,13 @@
                                 </form>
                             </td>
                         </tr>
+                        @php  $i += 1; @endphp
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="pagination md:justify-end m-6">
+            {{ $categories->links() }}
         </div>
     </section>
 @endsection

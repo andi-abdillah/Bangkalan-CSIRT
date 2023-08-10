@@ -35,7 +35,6 @@ class PostController extends Controller
 
         return view('posts',[
             "title" => "All Posts" . $title,
-            "active" => 'posts',
             "includeHero" => false,
             "includeVideo" => false,
             'footers' => Footer::latest()->get(),
@@ -80,7 +79,6 @@ class PostController extends Controller
     {   
         return view('post', [
             "title" => "Single Post",
-            "active" => 'posts',
             "includeHero" => false,
             "includeVideo" => false,
             'profils' => Profil::latest()->get(),

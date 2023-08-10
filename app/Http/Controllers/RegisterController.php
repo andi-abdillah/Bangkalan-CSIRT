@@ -24,7 +24,6 @@ class RegisterController extends Controller
             'title' => 'Register',
             'includeHero' => false,
             'includeVideo' => false,
-            'active' => 'register',
             'categories' => Category::all(),
             'posts' => Post::where('published', true)
                 ->latest()
@@ -47,7 +46,6 @@ class RegisterController extends Controller
         return view('register.change-password', [
             'title' => 'Register',
             'includeHero' => false,
-            'active' => 'register',
             'categories' => Category::all(),
             'posts' => Post::where('published', true)
                 ->latest()

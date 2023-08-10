@@ -58,7 +58,7 @@
             <header class="sticky top-5 z-30">
                 @include('dashboard.layouts.header')
             </header>
-            <div class="relative top-5">
+            <div class="relative top-5 bottom-5">
                 @yield('container')
             </div>
         </main>
@@ -79,6 +79,12 @@
                 navbar.classList.add("bg-neutral/20");
             }
         })
+
+        const alert = document.getElementById('alert')
+        const closeBtn = document.getElementById('closeBtn')
+        closeBtn.addEventListener('click', function() {
+            alert.style.display = 'none';
+        });
     </script>
 </body>
 

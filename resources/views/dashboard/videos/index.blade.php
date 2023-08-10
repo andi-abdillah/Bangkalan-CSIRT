@@ -2,12 +2,15 @@
 
 @section('container')
     @if (session()->has('success'))
-        <div class="alert alert-success flex" role="alert">
-            {{ session('success') }}
+        <div id="alert" class="alert alert-success flex justify-between" role="alert">
+            <span>
+                {{ session('success') }}
+            </span>
+            <button id="closeBtn" class="btn btn-neutral btn-circle btn-sm">X</button>
         </div>
     @endif
 
-    <section class="mb-4">
+    <section class="mb-8">
         <h1 class="text-2xl font-bold my-4">Video Profile</h1>
         <div class="divider"></div>
         @if (!$videos->count())
@@ -22,6 +25,7 @@
                         <th class="p-3">No.</th>
                         <th class="p-3 text-left">Name</th>
                         <th class="p-3 text-left">Video</th>
+                        <th class="p-3 text-left">Status</th>
                         <th class="p-3 text-left">Action</th>
                     </tr>
                 </thead>
@@ -35,7 +39,8 @@
                                     <source src="{{ asset('storage/' . $video->video) }}" class="w-full">
                                 </video>
                             </td>
-                            <td class="p-3 flex gap-2">
+                            <td class="p-3">{{ $video->show ? 'Show' : 'Hidden' }}</td>
+                            <td class="p-3 m-auto">
                                 <a class="icon-edit tooltip" data-tip="Edit"
                                     href="/dashboard/videos/{{ $video->slug }}/edit">
                                     <span class="material-symbols-rounded">

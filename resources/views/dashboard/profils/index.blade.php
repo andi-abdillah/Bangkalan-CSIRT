@@ -2,12 +2,15 @@
 
 @section('container')
     @if (session()->has('success'))
-        <div class="alert alert-success flex" role="alert">
-            {{ session('success') }}
+        <div id="alert" class="alert alert-success flex justify-between" role="alert">
+            <span>
+                {{ session('success') }}
+            </span>
+            <button id="closeBtn" class="btn btn-neutral btn-circle btn-sm">X</button>
         </div>
     @endif
 
-    <section class="mb-4">
+    <section class="mb-8">
         <h1 class="text-2xl font-bold my-4">Profile</h1>
         <div class="divider"></div>
         <a href="/dashboard/profils/create" class="btn btn-add mb-3">Create Profile <span
@@ -31,8 +34,7 @@
                             <td class="p-3">{{ $profil->link }}</td>
                             <td class="p-3">{{ $profil->content }}</td>
                             <td class="p-3 flex gap-2">
-                                <a class="icon-show tooltip" data-tip="Show"
-                                    href="/dashboard/profils/{{ $profil->slug }}">
+                                <a class="icon-show tooltip" data-tip="Show" href="/dashboard/profils/{{ $profil->slug }}">
                                     <span class=" material-symbols-rounded">
                                         visibility
                                     </span>

@@ -28,7 +28,7 @@
                     </li>
                 </ul>
             </div>
-            <a class="lg:ml-7 my-1" href="/">
+            <a class="ml-3 lg:ml-7 my-1" href="/">
                 @foreach ($properties->take(1) as $property)
                     <img class="h-14 w-14" src="{{ asset('storage/' . $property->image) }}"
                         alt="{{ $property->property }}">
@@ -45,19 +45,6 @@
                 <li class="m-2 p-2"><a class="link-underline {!! Request::is('guidance') ? 'link-active' : '' !!}" href="/guidance">Guidance</a>
                 </li>
                 <li class="m-2 p-2"><a class="link-underline {!! Request::is('contact') ? 'link-active' : '' !!}" href="/contact">Contact</a></li>
-            </ul>
-        </div>
-        <div class="absolute dropdown dropdown-end right-4 lg:static">
-            <label tabindex="0" class="btn btn-ghost rounded-btn capitalize">Theme</label>
-            <ul id="theme" tabindex="0"
-                class="menu dropdown-content w-max mt-6 mx-4 p-2 shadow-xl bg-neutral rounded-box z-[1]">
-                <li><button class="capitalize" value="dark">dark</button></li>
-                <li><button class="capitalize" value="synthwave">synthwave</button></li>
-                <li><button class="capitalize" value="night">night</button></li>
-                <li><button class="capitalize" value="luxury">luxury</button></li>
-                <li><button class="capitalize" value="dracula">dracula</button></li>
-                <li><button class="capitalize" value="forest">forest</button></li>
-                <li><button class="capitalize" value="business">business</button></li>
             </ul>
         </div>
     </div>

@@ -5,15 +5,21 @@
         <h1 class="text-2xl font-bold my-4">Change Password</h1>
         <div class="divider"></div>
 
-        <div class="panel-body">
-            @if (session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
+        <div class="mb-8">
+            @if (session('success'))
+                <div id="alert" class="alert alert-success flex justify-between" role="alert">
+                    <span>
+                        {{ session('success') }}
+                    </span>
+                    <button id="closeBtn" class="btn btn-neutral btn-circle btn-sm">X</button>
                 </div>
             @endif
-            @if (session('success'))
-                <div class="alert alert-success flex">
-                    {{ session('success') }}
+            @if (session('error'))
+                <div id="alert" class="alert alert-danger flex justify-between" role="alert">
+                    <span>
+                        {{ session('error') }}
+                    </span>
+                    <button id="closeBtn" class="btn btn-neutral btn-circle btn-sm">X</button>
                 </div>
             @endif
             @if ($errors)

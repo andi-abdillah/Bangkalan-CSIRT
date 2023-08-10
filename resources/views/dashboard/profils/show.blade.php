@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <section class="flex flex-col gap-3">
+    <section class="flex flex-col gap-3 mb-8">
         <h1 class="text-2xl lg:text-3xl">{{ $profil->name }}</h1>
         <div class="flex gap-2">
             <a href="/dashboard/profils" class="btn btn-back">

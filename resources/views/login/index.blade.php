@@ -5,24 +5,30 @@
         <div class="container py-28">
 
             @if (session()->has('success'))
-                <div class="alert alert-success flex w-10/12 md:w-1/2 mx-auto mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>{{ session('success') }}</span>
+                <div id="alert" class="alert alert-success flex justify-between w-11/12 md:w-10/12 lg:w-4/6 mx-auto mb-3">
+                    <span class="flex gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>{{ session('success') }}</span>
+                    </span>
+                    <button id="closeBtn" class="btn btn-neutral btn-circle btn-sm">X</button>
                 </div>
             @endif
 
             @if (session()->has('loginError'))
-                <div class="alert alert-error flex w-10/12 md:w-1/2 mx-auto mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>{{ session('loginError') }}</span>
+                <div id="alert" class="alert alert-error flex justify-between w-11/12 md:w-10/12 lg:w-4/6 mx-auto mb-3">
+                    <span class="flex gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>{{ session('loginError') }}</span>
+                    </span>
+                    <button id="closeBtn" class="btn btn-neutral btn-circle btn-sm">X</button>
                 </div>
             @endif
 
@@ -39,7 +45,7 @@
                     <div class="my-4">
                         <input type="email" name="email" id="email" placeholder="Your Email"
                             class="input bg-neutral w-full transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-secondary"
-                            autofocus required />
+                            value="{{ old('email') }}" autofocus required />
                         @error('email')
                             <p class="text-red-700 font-light">
                                 {{ $message }}

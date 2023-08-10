@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Models\File;
 use App\Models\Profil;
 use App\Models\ImageProperty;
-use App\Models\VideoProfile;
 use App\Models\Key;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,12 +28,10 @@ class LoginController extends Controller
             'profils' => Profil::latest()->get(),
             'footers' => Footer::latest()->get(),
             'categories' => Category::all(),
-            'active' => 'login',
             'files' => File::latest()->get(),
             'keys' => Key::latest()->get(),
             'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
             'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
-            'videoProfile' => VideoProfile::latest()->get(),
             'posts' => Post::where('published', true)->latest()->get()
         ]);
     }

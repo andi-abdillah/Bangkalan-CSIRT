@@ -44,13 +44,12 @@ Route::get('/', function () {
         "includeVideo" => true,
         'footers' => Footer::latest()->get(),
         'profils' => Profil::latest()->get(),
-        'categories' => Category::all(),
         'posts' => Post::where('published', true)->latest()->get(),
         'files' => File::latest()->get(),
         'keys' => Key::latest()->get(),
         'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
         'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
-        'videoProfile' => VideoProfile::latest()->get(),
+        'videoProfile' => VideoProfile::where('show', true)->latest()->get(),
     ]);
 })->name('home')->middleware(Spatie\Csp\AddCspHeaders::class);
 
@@ -59,7 +58,6 @@ Route::get('/profil', function () {
         "includeHero" => false,
         "includeVideo" => false,
         'footers' => Footer::latest()->get(),
-        'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
         'posts' => Post::where('published', true)->latest()->get(),
         'files' => File::latest()->get(),
@@ -74,7 +72,6 @@ Route::get('/file', function(){
         "includeHero" => false,
         "includeVideo" => false,
         'footers' => Footer::latest()->get(),
-        'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
         'posts' => Post::where('published', true)->latest()->get(),
         'files' => File::latest()->get(),
@@ -89,7 +86,6 @@ Route::get('/service', function(){
         "includeHero" => false,
         "includeVideo" => false,
         'footers' => Footer::latest()->get(),
-        'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
         'posts' => Post::where('published', true)->latest()->get(),
         'files' => File::latest()->get(),
@@ -105,7 +101,6 @@ Route::get('/guidance', function(){
         "includeHero" => false,
         "includeVideo" => false,
         'footers' => Footer::latest()->get(),
-        'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
         'posts' => Post::where('published', true)->latest()->get(),
         'files' => File::latest()->get(),
@@ -122,7 +117,6 @@ Route::get('/contact', function(){
         "includeHero" => false,
         "includeVideo" => false,
         'footers' => Footer::latest()->get(),
-        'categories' => Category::all(),
         'profils' => Profil::latest()->get(),
         'posts' => Post::where('published', true)->latest()->get(),
         'files' => File::latest()->get(),
@@ -139,11 +133,10 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/login/reload-captcha', [LoginController::class, 'reloadCaptcha']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-
-Route::get('/register', [RegisterController::class, 'index'])->middleware('admin');
+Route::get('/register', [RegisterController::class, 'index'])->middleware('superadmin');
 Route::get('/register/showChangePasswordGet', [RegisterController::class, 'showChangePasswordGet'])->middleware(Spatie\Csp\AddCspHeaders::class,'auth');
 Route::post('/register/showChangePasswordGet', [RegisterController::class, 'changePasswordUser'])->middleware('auth');
-Route::post('/register', [RegisterController::class, 'store'])->middleware('admin');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('superadmin');
 
 
 Route::resource('/posts', PostController::class)->only(['index', 'show'])->middleware(Spatie\Csp\AddCspHeaders::class);
@@ -172,7 +165,7 @@ Route::resource('/dashboard/profils', ProfilController::class)->middleware('admi
 
 Route::resource('/dashboard/files', FileController::class)->only(['index', 'create', 'store', 'destroy'])->middleware('admin');
 
-Route::resource('/dashboard/users', UserManagementController::class)->only(['index', 'edit', 'update'])->middleware(Spatie\Csp\AddCspHeaders::class,'superadmin');
+Route::resource('/dashboard/users', UserManagementController::class)->only(['index', 'edit', 'update'])->middleware('superadmin');
 
 Route::resource('/dashboard/services', ServiceController::class)->middleware('admin');
 

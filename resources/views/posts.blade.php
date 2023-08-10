@@ -21,7 +21,7 @@
                         </svg>
                     </div>
                     <input type="search" id="default-search"
-                        class="block w-full p-4 pl-10 pr-24 text-lg bg-neutral transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-primary rounded-[12px]"
+                        class="block w-full p-4 pl-10 pr-24 text-base bg-neutral transition duration-300 focus:outline-none focus:ring focus:ring-2 focus:ring-primary rounded-[12px]"
                         name="search" value="{{ request('search') }}" placeholder="Search...">
                     <button type="submit"
                         class="absolute right-0 top-0 btn btn-primary h-full rounded-l-none rounded-r-[12px]">Search
@@ -111,7 +111,7 @@
                             <a class="underline text-base md:text-xl font-bold transition ease-in-out duration-300 hover:decoration-primary"
                                 href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}
                             </a>
-                            <h2 class="text-base md:text-lg font-bold">{{ $post->title }}</h2>
+                            <h2 class="text-base font-bold">{{ $post->title }}</h2>
                             <p>
                                 By <a class="underline decoration-primary"
                                     href="/posts?author={{ $post->author->username }}">{{ $post->author->name }}

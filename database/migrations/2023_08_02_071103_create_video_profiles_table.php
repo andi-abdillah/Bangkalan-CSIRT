@@ -18,6 +18,7 @@ class CreateVideoProfilesTable extends Migration
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->string('video');
+            $table->boolean('show')->default(false);
             $table->timestamps();
         });
     }

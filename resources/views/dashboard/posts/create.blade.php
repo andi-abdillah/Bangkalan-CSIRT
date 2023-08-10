@@ -1,15 +1,15 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <section class="mb-4">
+    <section class="mb-8">
         <h1 class="text-2xl font-bold my-4">Create a New Post</h1>
         <div class="divider"></div>
         <form method="post" action="/dashboard/posts" class="mb-5" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="title" class="text-xl">Title</label>
-                <input type="text" id="title" name="title" value="{{ old('title') }}"
-                    class="form-input @error('title') is-invalid @enderror" autofocus required />
+                <input type="text" id="title" name="title" value="{{ old('title') }}" class="form-input" autofocus
+                    required />
                 @error('title')
                     <p class="text-red-500 font-light">
                         {{ $message }}
@@ -18,8 +18,8 @@
             </div>
             <div class="mb-3">
                 <label for="slug" class="text-xl">Slug</label>
-                <input type="text" id="slug" name="slug" value="{{ old('slug') }}"
-                    class="form-input @error('slug') is-invalid @enderror" required />
+                <input type="text" id="slug" name="slug" value="{{ old('slug') }}" class="form-input"
+                    required />
                 @error('slug')
                     <p class="text-red-500 font-light">
                         {{ $message }}
@@ -40,10 +40,9 @@
             </div>
             <div class="mb-3">
                 <label for="image" class="text-xl">Post Image</label>
-                <img class="img-preview my-3 w-64 rounded-lg">
-                <input type="file"
-                    class="file-input file-input-bordered file-input-secondary w-full @error('image') is-invalid @enderror"
-                    id="image" name="image" onchange="previewImage()" required />
+                <img class="img-preview mb-3 w-64 rounded-lg">
+                <input type="file" class="file-input file-input-bordered file-input-secondary w-full" id="image"
+                    name="image" onchange="previewImage()" required />
                 @error('image')
                     <p class="text-red-500 font-light">
                         {{ $message }}

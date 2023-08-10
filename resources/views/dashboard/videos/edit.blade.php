@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <section class="mb-4">
+    <section class="mb-8">
         <h1 class="text-2xl font-bold my-4">Edit video</h1>
         <div class="divider"></div>
         <form method="post" action="/dashboard/videos/{{ $video->slug }}" class="mb-5" enctype="multipart/form-data">
@@ -9,8 +9,8 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="text-xl">Title</label>
-                <input type="text" class="form-input @error('video') is-invalid @enderror" id="title" name="title"
-                    required value="{{ old('video', $video->title) }}">
+                <input type="text" class="form-input" id="title" name="title" required
+                    value="{{ old('video', $video->title) }}">
                 @error('video')
                     <p class="text-red-500 font-light">
                         {{ $message }}
@@ -26,14 +26,18 @@
                         <source class="video-preview w-full">
                     @endif
                 </video>
-                <input
-                    class="file-input file-input-bordered file-input-secondary w-full @error('video') is-invalid @enderror"
-                    type="file" id="video" name="video" accept="video/*" onchange="previewVideo()">
+                <input class="file-input file-input-bordered file-input-secondary w-full" type="file" id="video"
+                    name="video" accept="video/*" onchange="previewVideo()">
                 @error('video')
                     <p class="text-red-500 font-light">
                         {{ $message }}
                     </p>
                 @enderror
+            </div>
+            <div class="mb-3 flex">
+                <input type="checkbox" class="checkbox checkbox-info" id="show" name="show"
+                    {{ $video->show ? 'checked' : '' }} value="">
+                <label for="flexCheckDefault" class="text-xl mx-2">Show</label>
             </div>
             <button type="submit" class="btn btn-add">
                 Update video

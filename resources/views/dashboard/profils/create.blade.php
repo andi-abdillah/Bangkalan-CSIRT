@@ -1,15 +1,15 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <section class="mb-4">
+    <section class="mb-8">
         <h1 class="text-2xl font-bold my-4">Create a New Profil</h1>
         <div class="divider"></div>
         <form method="post" action="/dashboard/profils" class="mb-5">
             @csrf
             <div class="mb-3">
                 <label for="name" class="text-xl">Name</label>
-                <input type="text" class="form-input @error('name') is-invalid @enderror" id="name" name="name"
-                    required autofocus value="{{ old('name') }}">
+                <input type="text" class="form-input" id="name" name="name" required autofocus
+                    value="{{ old('name') }}">
                 @error('name')
                     <p class="text-red-500 font-light">
                         {{ $message }}
@@ -18,8 +18,7 @@
             </div>
             <div class="mb-3">
                 <label for="link" class="text-xl">Link Sistem Ticketing</label>
-                <textarea class="form-textarea @error('link') is-invalid @enderror" id="link" name="link" required
-                    rows="2">{{ old('link') }}</textarea>
+                <textarea class="form-textarea" id="link" name="link" required rows="2">{{ old('link') }}</textarea>
                 @error('link')
                     <p class="text-red-500 font-light">
                         {{ $message }}
