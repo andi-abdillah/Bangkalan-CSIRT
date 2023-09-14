@@ -21,7 +21,6 @@ class RegisterController extends Controller
     public function index()
     {
         return view('register.index', [
-            'title' => 'Register',
             'includeHero' => false,
             'includeVideo' => false,
             'categories' => Category::all(),
@@ -44,7 +43,6 @@ class RegisterController extends Controller
     public function showChangePasswordGet()
     {
         return view('register.change-password', [
-            'title' => 'Register',
             'includeHero' => false,
             'categories' => Category::all(),
             'posts' => Post::where('published', true)
@@ -112,16 +110,15 @@ class RegisterController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login')->with('success', 'Password has been updated, Please login!');
+        return redirect('/csirt-login')->with('success', 'Password has been updated, Please login!');
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'username' => ['required', 'min:3', 'max:255', 'unique:users'],
-            'email' => 'required|email:dns|unique:users',
-            // 'email' => 'required|unique:users',
+            'username' => ['required', 'min:3', 'max:255', 'unique:users,username'],
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:5|max:255',
         ]);
 

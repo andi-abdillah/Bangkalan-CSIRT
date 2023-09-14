@@ -52,7 +52,7 @@ class VideoProfileController extends Controller
     {
         if (!VideoProfile::count()) {
             $validatedData = $request->validate([
-                'title' => 'required|max:255|unique:video_profiles',
+                'title' => 'required|max:255|unique:video_profiles,title',
                 'video' => 'required|mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:120000',
             ]);
 
@@ -116,7 +116,7 @@ class VideoProfileController extends Controller
         ];
 
         if ($request->title != $video->title) {
-            $rules['title'] = 'required|max:255|unique:video_profiles';
+            $rules['title'] = 'required|max:255|unique:video_profiles,title';
         }
 
         $validatedData = $request->validate($rules);

@@ -9,8 +9,12 @@
                 </svg>
             </label>
         </div>
+        @foreach ($properties->take(1) as $property)
+            <img class="h-12 w-12 ml-3 lg:ml-5" src="{{ asset('storage/' . $property->image) }}"
+                alt="{{ $property->property }}">
+        @endforeach
         @foreach ($profils->take(1) as $profil)
-            <a class="text-xl lg:mx-3" href="/"><strong>{{ $profil->name }}</strong></a>
+            <a class="text-xl ml-3 hidden md:inline" href="/"><strong>{{ $profil->name }}</strong></a>
         @endforeach
     </div>
     <div class="navbar-end w-auto">

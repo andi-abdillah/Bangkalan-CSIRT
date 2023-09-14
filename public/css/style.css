@@ -1,4 +1,4 @@
-* {
+body {
     font-family: "Fira Sans", sans-serif;
 }
 
@@ -9,7 +9,8 @@
 
 .link-underline {
     border-bottom-width: 0;
-    background-image: linear-gradient(transparent, transparent), linear-gradient(hsl(var(--s)), hsl(var(--s)));
+    background-image: linear-gradient(transparent, transparent),
+        linear-gradient(hsl(var(--s)), hsl(var(--s)));
     background-size: 0 2.5px;
     background-position: 0 100%;
     background-repeat: no-repeat;
@@ -37,6 +38,14 @@
 
 .child-img {
     transform: translateZ(-10px);
+}
+
+#whatsapp-icon {
+    background-image: url("/img/whatsapp-icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transform-style: preserve-3d;
 }
 
 trix-toolbar [data-trix-button-group="file-tools"] {

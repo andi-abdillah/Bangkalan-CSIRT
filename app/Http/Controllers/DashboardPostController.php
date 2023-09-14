@@ -20,6 +20,10 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
+        if (auth()->guest()) {
+            return redirect('/csirt-login');
+        }
+
         if (auth()->user()->is_admin) {
             return view('dashboard.posts.index', [
                 'profils' => Profil::latest()->get(),
@@ -32,6 +36,7 @@ class DashboardPostController extends Controller
                     ->get(),
             ]);
         }
+
         return view('dashboard.posts.index', [
             'profils' => Profil::latest()->get(),
             'posts' => Post::where('user_id', auth()->user()->id)
@@ -70,7 +75,7 @@ class DashboardPostController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'slug' => 'required|unique:posts',
+            'slug' => 'required|unique:posts,slug',
             'category_id' => 'required',
             'image' => 'image|file|max:2048',
             'body' => 'required',
@@ -119,18 +124,18 @@ class DashboardPostController extends Controller
      */
     public function edit(Post $post)
     {
-        if (auth()->user()->is_admin || auth()->user()) {
-            return view('dashboard.posts.edit', [
-                'profils' => Profil::latest()->get(),
-                'post' => $post,
-                'categories' => Category::all(),
-                'properties' => ImageProperty::where('property', 'Logo')
-                    ->latest()
-                    ->get(),
-            ]);
-        } else {
-            return redirect()->back();
+        if (auth()->guest()) {
+            return redirect('/csirt-login');
         }
+
+        return view('dashboard.posts.edit', [
+            'profils' => Profil::latest()->get(),
+            'post' => $post,
+            'categories' => Category::all(),
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
+        ]);
     }
 
     /**
@@ -150,7 +155,7 @@ class DashboardPostController extends Controller
         ];
 
         if ($request->slug != $post->slug) {
-            $rules['slug'] = 'required|unique:posts';
+            $rules['slug'] = 'required|unique:posts,slug';
         }
 
         $validatedData = $request->validate($rules);
@@ -183,16 +188,17 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if (auth()->user()->is_admin) {
-            if ($post->image) {
-                Storage::delete($post->image);
-            }
-            Post::destroy($post->id);
-
-            return redirect('/dashboard/posts')->with('success', 'Post has been deleted!');
-        } else {
-            return redirect()->back();
+        if (auth()->guest() || !auth()->user()->is_admin) {
+            return redirect('/csirt-login');
         }
+
+        if ($post->image) {
+            Storage::delete($post->image);
+        }
+
+        Post::destroy($post->id);
+
+        return redirect('/dashboard/posts')->with('success', 'Post has been deleted!');
     }
 
     public function checkSlug(Request $request)

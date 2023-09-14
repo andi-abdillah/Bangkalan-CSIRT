@@ -31,9 +31,9 @@
                 <tbody>
                     @foreach ($footers as $footer)
                         <tr>
-                            <td class="p-3">{{ $loop->iteration }} .</td>
+                            <td class="p-3">{{ $loop->iteration }}.</td>
                             <td class="p-3">{{ $footer->name }}</td>
-                            <td class="p-3">{{ $footer->address }}</td>
+                            <td class="p-3">{{ Str::limit($footer->address, 80) }}</td>
                             <td class="p-3 max-w-[150px] lg:max-w-[250px] text-ellipsis overflow-hidden">{{ $footer->maps }}
                             </td>
                             <td class="p-3">{{ $footer->telephone }}</td>

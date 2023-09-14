@@ -22,6 +22,7 @@
                         <th class="p-3">No.</th>
                         <th class="p-3 text-left">Name</th>
                         <th class="p-3 text-left">Link Ticketing</th>
+                        <th class="p-3 text-left">Whatsapp Link</th>
                         <th class="p-3 text-left">Content</th>
                         <th class="p-3 text-left">Action</th>
                     </tr>
@@ -29,10 +30,11 @@
                 <tbody>
                     @foreach ($profils as $profil)
                         <tr>
-                            <td class="p-3">{{ $loop->iteration }} .</td>
+                            <td class="p-3">{{ $loop->iteration }}.</td>
                             <td class="p-3">{{ $profil->name }}</td>
                             <td class="p-3">{{ $profil->link }}</td>
-                            <td class="p-3">{{ $profil->content }}</td>
+                            <td class="p-3 max-w-[150px] text-ellipsis overflow-hidden">{{ $profil->whatsapp_link }}</td>
+                            <td class="p-3">{{ Str::limit(strip_tags($profil->content), 200) }}</td>
                             <td class="p-3 flex gap-2">
                                 <a class="icon-show tooltip" data-tip="Show" href="/dashboard/profils/{{ $profil->slug }}">
                                     <span class=" material-symbols-rounded">

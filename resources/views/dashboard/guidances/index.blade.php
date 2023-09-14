@@ -11,7 +11,7 @@
     @endif
 
     <section class="mb-8">
-        <h1 class="text-2xl font-bold my-4">File Panduan</h1>
+        <h1 class="text-2xl font-bold my-4">Guidance File</h1>
         <div class="divider"></div>
         <a href="/dashboard/guidances/create" class="btn btn-add mb-3">Upload a New File
             <span class="material-symbols-rounded">add</span>
@@ -28,9 +28,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($guidances as $guidance)
+                    @foreach ($guidances as $key => $guidance)
                         <tr>
-                            <td class="p-3">{{ $loop->iteration }} .</td>
+                            <td class="p-3">{{ $guidances->firstItem() + $key }}.</td>
                             <td class="p-3">{{ $guidance->name }}</td>
                             <td class="p-3">{{ number_format(round($guidance->size / 1024, 2), 2, ',', '.') }} Kb</td>
                             <td class="p-3">{{ $guidance->path }}</td>
@@ -56,6 +56,9 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="pagination md:justify-end m-6">
+            {{ $guidances->links() }}
         </div>
     </section>
 @endsection

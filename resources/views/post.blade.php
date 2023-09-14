@@ -9,16 +9,14 @@
                 <p class="pb-4">By <a href="/posts?author={{ $post->author->username }}"
                         class="underline decoration-primary">{{ $post->author->name }}</a> in <a
                         href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a></p>
-                <div class="pb-4 rounded-2xl" style="max-height: 400px; overflow:hidden">
+                <div class="max-h-[400px] pb-4 rounded-2xl overflow-hidden">
                     <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" class="w-full">
                 </div>
-                <article class="my-4">
+                <article class="my-4 overflow-hidden">
                     {!! $post->body !!}
                 </article>
-                <a href="{{ url()->previous() }}"
-                    class="text-xl transition ease-in-out duration-300 hover:text-primary">
-                    < Back
-                </a>
+                <a href="{{ url()->previous() }}" class="text-xl transition ease-in-out duration-300 hover:text-primary">
+                    < Kembali </a>
             </div>
         </div>
     </div>

@@ -18,8 +18,10 @@ class ProfilController extends Controller
     public function index()
     {
         return view('dashboard.profils.index', [
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
-            'profils' => Profil::latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
+            'profils' => Profil::latest()->get(),
         ]);
     }
 
@@ -32,7 +34,9 @@ class ProfilController extends Controller
     {
         return view('dashboard.profils.create', [
             'profils' => Profil::latest()->get(),
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -47,10 +51,11 @@ class ProfilController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'content' => 'required',
-            'link' => 'required'
+            'link' => 'required',
+            'whatsapp_link' => 'required',
         ]);
 
-        $validatedData['slug'] = Str::slug($validatedData['name'],'-');
+        $validatedData['slug'] = Str::slug($validatedData['name'], '-');
 
         Profil::create($validatedData);
 
@@ -68,7 +73,9 @@ class ProfilController extends Controller
         return view('dashboard.profils.show', [
             'profils' => Profil::latest()->get(),
             'profil' => $profil,
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -83,7 +90,9 @@ class ProfilController extends Controller
         return view('dashboard.profils.edit', [
             'profils' => Profil::latest()->get(),
             'profil' => $profil,
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -99,10 +108,11 @@ class ProfilController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'content' => 'required',
-            'link' => 'required'
+            'link' => 'required',
+            'whatsapp_link' => 'required',
         ]);
 
-        $validatedData['slug'] = Str::slug($validatedData['name'],'-');
+        $validatedData['slug'] = Str::slug($validatedData['name'], '-');
 
         Profil::where('id', $profil->id)->update($validatedData);
 

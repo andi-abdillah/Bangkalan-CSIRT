@@ -19,7 +19,7 @@
             </div>
             <div class="mb-3">
                 <label for="video" class="text-xl">Video</label>
-                <video class="my-3 rounded-lg overflow-hidden" width="320" height="240" controls>
+                <video class="my-3 rounded-lg overflow-hidden" width="320" height="240" muted controls>
                     @if ($video->video)
                         <source src="{{ asset('storage/' . $video->video) }}" class="video-preview w-full">
                     @else

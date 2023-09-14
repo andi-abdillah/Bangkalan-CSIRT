@@ -19,6 +19,7 @@ class CreateProfilsTable extends Migration
             $table->string('slug')->unique();
             $table->text('content');
             $table->text('link');
+            $table->string('whatsapp_link');
             $table->timestamps();
         });
     }

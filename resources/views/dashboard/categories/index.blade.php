@@ -11,7 +11,7 @@
     @endif
 
     <section class="mb-8">
-        <h1 class="text-2xl font-bold my-4">Post Category</h1>
+        <h1 class="text-2xl font-bold my-4">Post Categories</h1>
         <div class="divider"></div>
         <a href="/dashboard/categories/create" class="btn btn-add mb-3">Create a New Category <span
                 class="material-symbols-rounded">add</span></a>
@@ -25,10 +25,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @php $i = ($categories->currentpage()-1)* $categories->perpage() + 1;@endphp
-                    @foreach ($categories as $category)
+                    @foreach ($categories as $key => $category)
                         <tr>
-                            <td class="p-3">{{ $i }} .</td>
+                            <td class="p-3">{{ $categories->firstItem() + $key }}.</td>
                             <td class="p-3 w-full">{{ $category->name }}</td>
                             <td class="p-3 flex gap-2">
                                 <a class="icon-edit tooltip" data-tip="Edit"
@@ -41,7 +40,8 @@
                                     method="post">
                                     @method('delete')
                                     @csrf
-                                    <button class="icon-delete" onclick="return confirm('Are you sure?')">
+                                    <button class="icon-delete"
+                                        onclick="return confirm('Deleting this category will also remove its associated posts. Are you sure you want to proceed?')">
                                         <span class="material-symbols-rounded">
                                             delete
                                         </span>
@@ -49,7 +49,6 @@
                                 </form>
                             </td>
                         </tr>
-                        @php  $i += 1; @endphp
                     @endforeach
                 </tbody>
             </table>

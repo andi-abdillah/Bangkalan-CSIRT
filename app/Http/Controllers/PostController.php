@@ -9,9 +9,9 @@ use App\Models\Footer;
 use App\Models\Profil;
 use App\Models\Category;
 use App\Models\ImageProperty;
+use App\Models\Key;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-use App\Models\Key;
 
 class PostController extends Controller
 {
@@ -22,29 +22,50 @@ class PostController extends Controller
      */
     public function index()
     {
-        $title ='';
-        if(request('category')){
+        $title = '';
+        $selectedCategory = '';
+
+        if (request('category')) {
             $category = Category::firstWhere('slug', request('category'));
-            $title = ' in ' . $category->name;
+            if (!$category) {
+                return abort(404);
+            }
+            $title = ' di ' . $category->name;
+            $selectedCategory = $category->name;
         }
 
-        if(request('author')){
+        if (request('author')) {
             $author = User::firstWhere('username', request('author'));
-            $title = ' by ' . $author->name;
+            if (!$author) {
+                return abort(404);
+            }
+            $title = ' oleh ' . $author->name;
         }
 
-        return view('posts',[
-            "title" => "All Posts" . $title,
-            "includeHero" => false,
-            "includeVideo" => false,
+        return view('posts', [
+            'title' => 'Seluruh Artikel' . $title,
+            'selectedCategory' => $selectedCategory,
+            'includeHero' => false,
+            'includeVideo' => false,
             'footers' => Footer::latest()->get(),
             'categories' => Category::all(),
             'profils' => Profil::latest()->get(),
             'files' => File::latest()->get(),
             'keys' => Key::latest()->get(),
-            'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
-            "posts" => Post::where('published', true)->latest()->filter(request(['search', 'category', 'author']))->paginate(7)->withQueryString()
+            'propertiez' => ImageProperty::where('property', 'Banner')
+                ->latest()
+                ->get(),
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
+            'posts' => Post::where('published', true)
+                ->latest()
+                ->get(),
+            'postsWithQuery' => Post::where('published', true)
+                ->latest()
+                ->filter(request(['search', 'category', 'author']))
+                ->paginate(7)
+                ->withQueryString(),
         ]);
     }
 
@@ -76,22 +97,27 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Post $post)
-    {   
+    {
         return view('post', [
-            "title" => "Single Post",
-            "includeHero" => false,
-            "includeVideo" => false,
+            'title' => 'Single Post',
+            'includeHero' => false,
+            'includeVideo' => false,
             'profils' => Profil::latest()->get(),
             'footers' => Footer::latest()->get(),
-            'posts' => Post::where('published', true)->latest()->get(),
+            'posts' => Post::where('published', true)
+                ->latest()
+                ->get(),
             'files' => File::latest()->get(),
             'categories' => Category::all(),
             'keys' => Key::latest()->get(),
-            'propertiez'  => ImageProperty::where('property', 'Banner')->latest()->get(),
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
-            "post" => $post
-        ]
-    );
+            'propertiez' => ImageProperty::where('property', 'Banner')
+                ->latest()
+                ->get(),
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
+            'post' => $post,
+        ]);
     }
 
     /**

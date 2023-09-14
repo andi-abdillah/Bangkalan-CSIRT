@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Profil;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\ImageProperty;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AdminCategoryController extends Controller
 {
@@ -19,8 +21,10 @@ class AdminCategoryController extends Controller
     {
         return view('dashboard.categories.index', [
             'profils' => Profil::latest()->get(),
-            'categories' => Category::paginate(3)->withQueryString(),
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'categories' => Category::paginate(7)->withQueryString(),
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -34,7 +38,9 @@ class AdminCategoryController extends Controller
         return view('dashboard.categories.create', [
             'profils' => Profil::latest()->get(),
             'categories' => Category::all(),
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -48,7 +54,7 @@ class AdminCategoryController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'slug' => 'required|unique:categories',
+            'slug' => 'required|unique:categories,slug',
         ]);
 
         $validatedData['name'] = strip_tags($validatedData['name']);
@@ -79,8 +85,10 @@ class AdminCategoryController extends Controller
     {
         return view('dashboard.categories.edit', [
             'profils' => Profil::latest()->get(),
-            'category'=> $category,
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'category' => $category,
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -97,8 +105,8 @@ class AdminCategoryController extends Controller
             'name' => 'required|max:255',
         ];
 
-        if($request->slug != $category->slug) {
-            $rules['slug'] = 'required|unique:posts';
+        if ($request->slug != $category->slug) {
+            $rules['slug'] = 'required|unique:categories,slug';
         }
 
         $validatedData = $request->validate($rules);
@@ -118,14 +126,21 @@ class AdminCategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $posts = Post::where('category_id', $category->id)->get();
+
+        foreach ($posts as $post) {
+            Storage::delete($post->image);
+            $post->delete();
+        }
 
         $category->delete();
 
-        return redirect('/dashboard/categories')->with('success', 'Category has been deleted!');
+        return redirect('/dashboard/categories')->with('success', 'Category and its ASSOCIATED POSTS have been deleted!');
     }
 
-    public function checkSlug(Request $request) {
+    public function checkSlug(Request $request)
+    {
         $slug = SlugService::createSlug(Category::class, 'slug', $request->name);
-        return response()->json(['slug' => $slug]);       
+        return response()->json(['slug' => $slug]);
     }
 }

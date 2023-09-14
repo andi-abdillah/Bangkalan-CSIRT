@@ -24,6 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono&display=swap" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/css/style.css" rel="stylesheet">
@@ -41,14 +42,14 @@
 
 </head>
 
-<body class="relative">
+<body class="flex flex-col min-h-screen">
     @include('layouts.navbar')
 
     @includeWhen($includeHero, 'layouts.hero')
 
     @includeWhen($includeVideo, 'layouts.video')
 
-    <div class="m-0 p-0">
+    <div class="grow m-0 p-0">
         @yield('container')
     </div>
 
@@ -75,12 +76,15 @@
                 }
             });
         })
-        
-        const alert = document.getElementById('alert')
-        const closeBtn = document.getElementById('closeBtn')
-        closeBtn.addEventListener('click', function() {
-            alert.style.display = 'none';
-        });
+
+        const alert = document.getElementById('alert');
+        const closeBtn = document.getElementById('closeBtn');
+
+        if (closeBtn && alert) {
+            closeBtn.addEventListener('click', function() {
+                alert.style.display = 'none';
+            });
+        }
     </script>
 </body>
 

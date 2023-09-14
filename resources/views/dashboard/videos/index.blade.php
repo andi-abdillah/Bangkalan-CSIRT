@@ -32,10 +32,10 @@
                 <tbody>
                     @foreach ($videos as $video)
                         <tr>
-                            <td class="p-3">{{ $loop->iteration }} .</td>
+                            <td class="p-3">{{ $loop->iteration }}.</td>
                             <td class="p-3">{{ $video->title }}</td>
                             <td class="p-3">
-                                <video class="rounded-lg overflow-hidden" width="320" height="240" controls>
+                                <video class="rounded-lg overflow-hidden" width="320" height="240" muted controls>
                                     <source src="{{ asset('storage/' . $video->video) }}" class="w-full">
                                 </video>
                             </td>

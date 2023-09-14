@@ -19,7 +19,7 @@
             <div class="mb-3">
                 <label for="file" class="text-xl">File</label>
                 <input type="file" class="file-input file-input-bordered file-input-secondary w-full" id="file"
-                    name="file" required value="{{ old('file') }}">
+                    name="file" accept=".pdf" required value="{{ old('file') }}">
                 @error('file')
                     <p class="text-red-500 font-light">
                         {{ $message }}

@@ -28,7 +28,7 @@
                 <tbody>
                     @foreach ($keys as $key)
                         <tr>
-                            <td class="p-3">{{ $loop->iteration }} .</td>
+                            <td class="p-3">{{ $loop->iteration }}.</td>
                             <td class="p-3">{{ $key->name }}</td>
                             <td class="p-3">{{ $key->path }}</td>
                             <td class="p-3 flex gap-2">

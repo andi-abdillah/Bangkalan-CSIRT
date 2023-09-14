@@ -30,7 +30,7 @@
                 <tbody>
                     @foreach ($users as $user)
                         <tr>
-                            <td class="p-3">{{ $loop->iteration }} .</td>
+                            <td class="p-3">{{ $loop->iteration }}.</td>
                             <td class="p-3">{{ $user->name }}</td>
                             <td class="p-3">{{ $user->username }}</td>
                             <td class="p-3">{{ $user->email }}</td>

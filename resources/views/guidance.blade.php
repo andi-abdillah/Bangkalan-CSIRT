@@ -2,39 +2,33 @@
 
 @section('container')
     <!-- Guidance Section -->
-    <div class="flex justify-center py-28">
+    <div class="flex justify-center pt-28">
         <div class="container">
             <h1 class="text-center text-2xl lg:text-4xl font-bold my-8">Panduan Penangan Insiden Siber</h1>
-            <article class="overflow-x-auto w-11/12 lg:w-4/5 mx-auto">
-                <table class="table table-zebra">
-                    <thead class="bg-base-300 font-bold text-base">
-                        <tr>
-                            <th>No.</th>
-                            <th>Name</th>
-                            <th>Size</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($guidances as $key => $guidance)
-                            <tr class="lg:text-xl">
-                                <th>{{ $guidances->firstItem() + $key }}</th>
-                                <td><a class="transition ease-in-out duration-300 underline underline-offset-4 hover:decoration-primary"
-                                        href="{{ 'storage/' . $guidance->path }}" target="_blank">{{ $guidance->name }}</a>
-                                </td>
-                                <td>{{ number_format(round($guidance->size / 1024, 2), 2, ',', '.') }} Kb</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <div>
-                    <div class="mt-5">
-                        Showing
+            <article class="mt-12 w-11/12 lg:w-2/3 mx-auto">
+                <ul class="list-none">
+                    @foreach ($guidances as $key => $guidance)
+                        <div class="divider -my-2"></div>
+                        <li
+                            class="flex justify-between items-center gap-8 px-4 md:px-8 py-3 transition ease-in-out duration-300 hover:text-black hover:scale-[1.05] hover:bg-info sm:rounded-full">
+                            <div class="flex gap-1">
+                                <span>{{ $guidances->firstItem() + $key }}.</span>
+                                <span>{{ $guidance->name }}</span>
+                            </div>
+                            <a class="text-black bg-accent-focus px-4 py-2 rounded-full"
+                                href="{{ 'storage/' . $guidance->path }}" target="_blank">Lihat</a>
+                        </li>
+                    @endforeach
+                </ul>
+                <div class="mt-12">
+                    <div class="my-6">
+                        Menampilkan
                         {{ $guidances->firstItem() }}
-                        to
+                        hingga
                         {{ $guidances->lastItem() }}
-                        of
+                        dari
                         {{ $guidances->total() }}
-                        enteries
+                        item tersedia
                     </div>
                     <div class="pagination">
                         {{ $guidances->links() }}

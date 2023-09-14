@@ -28,7 +28,7 @@
                 <tbody>
                     @foreach ($files as $file)
                         <tr>
-                            <td class="p-3">{{ $loop->iteration }} .</td>
+                            <td class="p-3">{{ $loop->iteration }}.</td>
                             <td class="p-3">{{ $file->name }}</td>
                             <td class="p-3">{{ $file->path }}</td>
                             <td class="p-3 flex gap-2">

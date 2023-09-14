@@ -27,8 +27,8 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="category" class="text-xl">Category</label>
-                <select name="category_id" class="form-select">
+                <label for="category_id" class="text-xl">Category</label>
+                <select id="category_id" name="category_id" class="form-select">
                     @foreach ($categories as $category)
                         @if (old('category_id') == $category->id)
                             <option value="{{ $category->id }}" selected>{{ $category->name }}</option>

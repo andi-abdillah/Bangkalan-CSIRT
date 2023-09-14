@@ -28,9 +28,9 @@
                 <tbody>
                     @foreach ($services as $service)
                         <tr>
-                            <td class="p-3">{{ $loop->iteration }} .</td>
+                            <td class="p-3">{{ $loop->iteration }}.</td>
                             <td class="p-3">{{ $service->name }}</td>
-                            <td class="p-3">{{ $service->content }}</td>
+                            <td class="p-3">{{ Str::limit(strip_tags($service->content), 200) }}</td>
                             <td class="p-3 flex gap-2">
                                 <a class="icon-show tooltip" data-tip="Show"
                                     href="/dashboard/services/{{ $service->slug }}">

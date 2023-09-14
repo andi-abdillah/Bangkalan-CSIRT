@@ -25,7 +25,9 @@ class FooterController extends Controller
             'posts' => Post::latest()->get(),
             'footers' => Footer::latest()->get(),
             'categories' => Category::all(),
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -39,7 +41,9 @@ class FooterController extends Controller
         return view('dashboard.footers.create', [
             'profils' => Profil::latest()->get(),
             'footers' => Footer::latest()->get(),
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -54,19 +58,16 @@ class FooterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required|regex:/[a-zA-Z]+.*([a-zA-Z]+( [a-zA-Z]+)+)/',
-            'maps' => [
-                'required',
-                'regex:/(https|http):\/\/(www\.|)google\.[a-z]+\/maps/'
-            ],
+            'maps' => ['required', 'regex:/(https|http):\/\/(www\.|)google\.[a-z]+\/maps/'],
             'telephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-            'email' => 'required|email:dns'
+            'email' => 'required|email',
         ]);
 
         $validatedData['name'] = strip_tags($validatedData['name']);
 
-        $validatedData['maps'] = strip_tags($validatedData['maps'],'<iframe>');
+        $validatedData['maps'] = strip_tags($validatedData['maps'], '<iframe>');
 
-        $validatedData['slug'] = Str::slug($validatedData['name'],'-');
+        $validatedData['slug'] = Str::slug($validatedData['name'], '-');
 
         Footer::create($validatedData);
 
@@ -96,7 +97,9 @@ class FooterController extends Controller
             'profils' => Profil::latest()->get(),
             'footer' => $footer,
             'footers' => Footer::all(),
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -112,19 +115,16 @@ class FooterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required|regex:/[a-zA-Z]+.*([a-zA-Z]+( [a-zA-Z]+)+)/',
-            'maps' => [
-                'required',
-                'regex:/(https|http):\/\/(www\.|)google\.[a-z]+\/maps/'
-            ],
+            'maps' => ['required', 'regex:/(https|http):\/\/(www\.|)google\.[a-z]+\/maps/'],
             'telephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-            'email' => 'required|email:dns'
+            'email' => 'required|email',
         ]);
 
         $validatedData['name'] = strip_tags($validatedData['name']);
 
-        $validatedData['maps'] = strip_tags($validatedData['maps'],'<iframe>');
+        $validatedData['maps'] = strip_tags($validatedData['maps'], '<iframe>');
 
-        $validatedData['slug'] = Str::slug($validatedData['name'],'-');
+        $validatedData['slug'] = Str::slug($validatedData['name'], '-');
 
         Footer::where('id', $footer->id)->update($validatedData);
 

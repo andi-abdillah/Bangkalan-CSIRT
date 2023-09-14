@@ -21,7 +21,9 @@ class UserManagementController extends Controller
         return view('dashboard.users.index', [
             'profils' => Profil::latest()->get(),
             'users' => User::all(),
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -68,8 +70,10 @@ class UserManagementController extends Controller
         return view('dashboard.users.edit', [
             'profils' => Profil::latest()->get(),
             'user' => $user,
-            'properties' => ImageProperty::where('property', 'Logo')->latest()->get(),
-            'users' => User::all()
+            'properties' => ImageProperty::where('property', 'Logo')
+                ->latest()
+                ->get(),
+            'users' => User::all(),
         ]);
     }
 
@@ -82,17 +86,16 @@ class UserManagementController extends Controller
      */
     public function update(Request $request, User $user)
     {
-
         $rules = [
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
         ];
 
-        if($request->username != $user->username) {
-            $rules['username'] = ['required', 'min:3', 'max:255', 'unique:users', 'regex:/^([a-z])+?(-|_|.)([a-z])+$/i'];
+        if ($request->username != $user->username) {
+            $rules['username'] = ['required', 'min:3', 'max:255', 'unique:users,username', 'regex:/^([a-z])+?(-|_|.)([a-z])+$/i'];
         }
 
-        if($request->email != $user->email) {
-            $rules['email'] = 'required|email:dns|unique:users';
+        if ($request->email != $user->email) {
+            $rules['email'] = 'required|email|unique:users,email';
         }
 
         if (!$user->is_superadmin) {
@@ -103,22 +106,22 @@ class UserManagementController extends Controller
                     ->letters()
                     ->numbers()
                     ->symbols()
-                    ->uncompromised(), 
+                    ->uncompromised(),
             ];
         }
 
         $validatedData = $request->validate($rules);
 
-        if($request->has('is_admin') || $user->is_superadmin){
+        if ($request->has('is_admin') || $user->is_superadmin) {
             $validatedData['is_admin'] = true;
         } else {
             $validatedData['is_admin'] = false;
         }
 
-        if($request->has('password')) {
+        if ($request->has('password')) {
             $validatedData['password'] = Hash::make($validatedData['password']);
         }
- 
+
         User::where('id', $user->id)->update($validatedData);
 
         return redirect('/dashboard/users')->with('success', 'User has been updated!');

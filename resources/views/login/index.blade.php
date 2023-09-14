@@ -59,7 +59,7 @@
                     </div>
                     <div class="flex my-4">
                         <input type="checkbox" value="" id="checkPassword" class="toggle toggle-primary">
-                        <label class="ml-3" for="remember">Show Password</label>
+                        <label class="ml-3" for="checkPassword">Show Password</label>
                     </div>
                     <div class="flex justify-between">
                         <span>{!! captcha_img() !!}</span>

@@ -45,10 +45,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @php $i = ($posts->currentpage()-1)* $posts->perpage() + 1;@endphp
-                    @foreach ($posts as $post)
+                    @foreach ($posts as $key => $post)
                         <tr>
-                            <td class="p-3">{{ $i }} .</td>
+                            <td class="p-3">{{ $posts->firstItem() + $key }}.</td>
                             <td class="p-3">{{ $post->title }}</td>
                             @can('admin')
                                 <td class="p-3 font-bold">{{ $post->author->name }}</td>
@@ -81,7 +80,6 @@
                                 @endcan
                             </td>
                         </tr>
-                        @php  $i += 1; @endphp
                     @endforeach
                 </tbody>
             </table>

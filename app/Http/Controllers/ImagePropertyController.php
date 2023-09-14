@@ -18,8 +18,6 @@ class ImagePropertyController extends Controller
      */
     public function index()
     {
-        
-
         return view('dashboard.properties.index', [
             'profils' => Profil::latest()->get(),
             'properties' => ImageProperty::latest()->get(),
@@ -49,7 +47,7 @@ class ImagePropertyController extends Controller
     {
         $validatedData = $request->validate([
             'property' => 'required|max:255',
-            'name' => 'required|max:255|unique:image_properties',
+            'name' => 'required|max:255|unique:image_properties,name',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
@@ -105,7 +103,7 @@ class ImagePropertyController extends Controller
         ];
 
         if($request->name != $property->name){
-            $rules['name'] = 'required|max:255|unique:image_properties';
+            $rules['name'] = 'required|max:255|unique:image_properties,name';
         }
 
         $validatedData = $request->validate($rules);

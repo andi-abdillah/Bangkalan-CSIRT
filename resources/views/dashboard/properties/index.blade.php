@@ -29,7 +29,7 @@
                 <tbody>
                     @foreach ($properties as $property)
                         <tr>
-                            <td class="p-3">{{ $loop->iteration }} .</td>
+                            <td class="p-3">{{ $loop->iteration }}.</td>
                             <td class="p-3">{{ $property->property }}</td>
                             <td class="p-3">{{ $property->name }}</td>
                             <td class="p-3">

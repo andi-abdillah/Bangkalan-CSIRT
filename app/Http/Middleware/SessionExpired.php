@@ -6,7 +6,6 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store;
 
-
 class SessionExpired
 {
     /**
@@ -18,19 +17,19 @@ class SessionExpired
      */
 
     protected $session;
-    protected $timeout = 600;
-     
-    public function __construct(Store $session){
-        $this->session = $session;
-    } 
+    protected $timeout = 300;
 
-    
+    public function __construct(Store $session)
+    {
+        $this->session = $session;
+    }
+
     public function handle(Request $request, Closure $next)
     {
         $isLoggedIn = $request->path() != '/logout';
-        if(! session('lastActivityTime'))
+        if (!session('lastActivityTime')) {
             $this->session->put('lastActivityTime', time());
-        elseif(time() - $this->session->get('lastActivityTime') > $this->timeout){
+        } elseif (time() - $this->session->get('lastActivityTime') > $this->timeout) {
             $this->session->forget('lastActivityTime');
             $cookie = cookie('intend', $isLoggedIn ? url()->current() : 'dashboard');
             auth()->logout();
@@ -38,5 +37,4 @@ class SessionExpired
         $isLoggedIn ? $this->session->put('lastActivityTime', time()) : $this->session->forget('lastActivityTime');
         return $next($request);
     }
-    
 }

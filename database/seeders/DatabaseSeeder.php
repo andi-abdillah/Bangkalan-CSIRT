@@ -18,9 +18,11 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         User::create([
-            'name' => 'Brian',
-            'username' => 'brian',
-            'email' => 'brian@gmail.com',
+            'name' => 'Andi',
+            'username' => 'Andi',
+            'email' => 'Andiabdillah255@gmail.com',
+            'is_admin' => true,
+            'is_superadmin' => true,
             'password' => bcrypt('password')
         ]);
         // User::create([
@@ -29,24 +31,24 @@ class DatabaseSeeder extends Seeder
         //     'password' => bcrypt('12345')
         // ]);
 
-        User::factory(4)->create();
+        // User::factory(4)->create();
 
-        Category::create([
-            'name'=> 'Web Programming',
-            'slug'=> 'web-programming'
-        ]);
+        // Category::create([
+        //     'name'=> 'Web Programming',
+        //     'slug'=> 'web-programming'
+        // ]);
 
-        Category::create([
-            'name'=> 'Web Design',
-            'slug'=> 'web-design'
-        ]);
+        // Category::create([
+        //     'name'=> 'Web Design',
+        //     'slug'=> 'web-design'
+        // ]);
 
-        Category::create([
-            'name'=> 'Personal',
-            'slug'=> 'personal'
-        ]);
+        // Category::create([
+        //     'name'=> 'Personal',
+        //     'slug'=> 'personal'
+        // ]);
 
 
-        Post::factory(6)->create();
+        // Post::factory(6)->create();
     }
 }

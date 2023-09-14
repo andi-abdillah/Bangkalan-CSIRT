@@ -39,10 +39,10 @@ class Post extends Model
                 $query
                     ->where('title', 'like', '%' . $value . '%')
                     ->orWhereHas('author', function ($query) use ($value) {
-                        $query->where('name', $value);
+                        $query->where('name', 'like', '%' . $value . '%');
                     })
                     ->orWhereHas('category', function ($query) use ($value) {
-                        $query->where('name', $value);
+                        $query->where('name', 'like', '%' . $value . '%');
                     });
             });
         });
@@ -50,7 +50,7 @@ class Post extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function author()

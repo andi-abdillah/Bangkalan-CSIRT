@@ -27,7 +27,7 @@
                 @enderror
             </div>
             <button type="submit" class="btn btn-add">
-                Create Categories
+                Create Category
                 <span class="material-symbols-rounded">
                     check_circle
                 </span>

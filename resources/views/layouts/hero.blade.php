@@ -6,10 +6,10 @@
             @foreach ($profils->take(1) as $profil)
                 <h1 class="text-center text-2xl md:text-4xl lg:text-6xl font-semibold">{{ $profil->name }}</h1>
                 <article class="text-center text-lg md:text-xl lg:w-3/4 mx-auto">
-                    {{ Illuminate\Support\Str::limit(strip_tags($profil->content), 310) }}
+                    {{ Illuminate\Support\Str::limit(strip_tags($profil->content), 280) }}
                 </article>
                 <div class="flex justify-center mt-4 gap-4">
-                    <a href="/profil" class="btn btn-outline btn-info rounded-none">Read More</a>
+                    <a href="/profile" class="btn btn-outline btn-info rounded-none">Selengkapnya</a>
                     <a href="{{ $profil->link }}" target="_blank" class="btn btn-outline btn-info rounded-none">Lapor
                         Insiden</a>
                 </div>
